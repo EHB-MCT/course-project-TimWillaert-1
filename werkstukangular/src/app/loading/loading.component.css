@@ -1,0 +1,57 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #BEBEBE;
+  position: relative;
+}
+
+img{
+  height: 250px;
+  margin: 150px auto 100px auto;
+}
+
+.loading{
+  width: 25%;
+  height: 30px;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+}
+
+.loadcontainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: -20%;
+  animation: loading 3.5s infinite steps(15);
+}
+
+.loaditem{
+  background-color: black;
+  height: 80%;
+  width: 4%;
+  display: inline-block;
+  margin: 0 1%;
+}
+
+@keyframes loading{
+  0%{
+    left: -30%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+
+p{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-size: 15px;
+}

@@ -1,0 +1,58 @@
+.desktop{
+  width: 70%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #008081;
+  position: relative;
+}
+
+.logo{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.logo img{
+  float: right;
+  padding-bottom: 10px;
+  height: 50px;
+}
+
+h2{
+  clear: both;
+  background-color: white;
+  font-size: 10px;
+  font-family: 'Windows';
+}
+
+ul{
+  list-style-type: none;
+  margin: 30px;
+  display: inline-block;
+}
+
+li{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+li img{
+  width: 40px;
+}
+
+li p{
+  color: white;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+li:hover{
+  cursor: pointer;
+}
+
+.tickets{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 45%;
+}
