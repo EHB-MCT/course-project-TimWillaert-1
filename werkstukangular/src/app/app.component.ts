@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, HostListener } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { WindowsService } from './windows.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { Component, AfterViewInit, HostListener } from '@angular/core';
 export class AppComponent implements AfterViewInit{
   title = 'Dots&Pix';
   isLoading = true;
+  aboutActive: boolean;
+
+  constructor(private windows: WindowsService){
+    this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
+  }
 
   ngAfterViewInit(){
     setTimeout(() => {
