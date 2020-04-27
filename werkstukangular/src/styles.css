@@ -36,3 +36,7 @@ body{
 .inset{
   border-style: inset;
 }
+
+.header:hover{
+  cursor: move;
+}

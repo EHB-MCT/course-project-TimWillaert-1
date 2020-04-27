@@ -8,6 +8,7 @@ import { TaskbarComponent } from './taskbar/taskbar.component';
 import { DesktopiconsComponent } from './desktopicons/desktopicons.component';
 import { AboutComponent } from './about/about.component';
 import { WindowsService } from './windows.service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WindowsService } from './windows.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule
   ],
   providers: [WindowsService],
   bootstrap: [AppComponent]
