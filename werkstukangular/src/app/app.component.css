@@ -1,6 +1,6 @@
 .desktop{
   width: 70%;
-  height: 92vh;
+  height: calc(100vh - 60px);
   margin: 0 auto;
   background-color: #008081;
   position: relative;

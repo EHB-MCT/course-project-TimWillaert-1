@@ -1,4 +1,4 @@
-<div class="practical" cdkDrag cdkDragBoundary=".desktop">
+<div class="practical" id="practical" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': practicalzindex}">
   <div class="header" cdkDragHandle>
     <p>Practical</p>
     <div class="close" (click)="close()">

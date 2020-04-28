@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, HostListener, AfterViewInit } from '@angular/core';
 import { WindowsService } from '../windows.service';
 
 @Component({
@@ -6,14 +6,21 @@ import { WindowsService } from '../windows.service';
   templateUrl: './practical.component.html',
   styleUrls: ['./practical.component.css']
 })
-export class PracticalComponent implements OnInit {
+export class PracticalComponent implements OnInit, AfterViewInit {
   zindex: number;
+  practicalzindex: number;
 
-  constructor(private eRef: ElementRef, private renderer: Renderer2, private windows: WindowsService) {
+  constructor(private eRef: ElementRef, private windows: WindowsService) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
+    this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editPracticalZ(this.zindex + 2);
   }
 
   public close(){
@@ -23,9 +30,8 @@ export class PracticalComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      const child = this.eRef.nativeElement.children[0];
       this.windows.editZ(this.zindex + 1);
-      this.renderer.setStyle(child, 'z-index', this.zindex + 2);
+      this.windows.editPracticalZ(this.zindex + 2);
     }
   }
 
