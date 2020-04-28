@@ -1,6 +1,7 @@
 .taskbar{
   height: 60px;
-  width: 100%;
+  width: 70%;
+  margin-left: 15%;
   background-color: #C0C0BF;
   position: absolute;
   bottom: 0;
@@ -34,12 +35,13 @@
 .startbar{
   display: none;
   position: absolute;
-  left: 0px;
+  left: 15%;
   bottom: 60px;
   height: 300px;
   width: 250px;
   background-color: #C0C0BF;
   border-style: outset;
+  z-index: 9999999999999999999999999999999999999999999999999999999;
 }
 
 .active{

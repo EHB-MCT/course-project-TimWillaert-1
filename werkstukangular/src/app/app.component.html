@@ -1,10 +1,13 @@
-<app-loading *ngIf="isLoading"></app-loading>
-<div class="desktop">
-  <div class="logo">
-    <img src="assets/img/blacklogo.png" alt="Dots&Pix">
-    <h2>Design & Technology Conference Brussels 2020</h2>
+<!-- <app-loading *ngIf="isLoading"></app-loading> -->
+<div class="app">
+  <div class="desktop">
+    <div class="logo">
+      <img src="assets/img/blacklogo.png" alt="Dots&Pix">
+      <h2>Design & Technology Conference Brussels 2020</h2>
+    </div>
+    <app-desktopicons></app-desktopicons>
+    <app-about *ngIf="aboutActive"></app-about>
+    <app-practical *ngIf="practicalActive"></app-practical>
   </div>
-  <app-desktopicons></app-desktopicons>
-  <app-about *ngIf="aboutActive"></app-about>
   <app-taskbar></app-taskbar>
 </div>

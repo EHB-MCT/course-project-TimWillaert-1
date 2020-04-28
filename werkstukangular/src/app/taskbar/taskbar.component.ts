@@ -27,6 +27,11 @@ export class TaskbarComponent implements OnInit {
     this.clicked = false;
   }
 
+  clickPractical(){
+    this.windows.editPractical(true);
+    this.clicked = false;
+  }
+
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(!this.eRef.nativeElement.contains(event.target)) {

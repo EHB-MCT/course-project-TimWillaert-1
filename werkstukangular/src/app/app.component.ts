@@ -10,9 +10,11 @@ export class AppComponent implements AfterViewInit{
   title = 'Dots&Pix';
   isLoading = true;
   aboutActive: boolean;
+  practicalActive: boolean;
 
   constructor(private windows: WindowsService){
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
+    this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
   }
 
   ngAfterViewInit(){

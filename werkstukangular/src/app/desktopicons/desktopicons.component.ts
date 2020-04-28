@@ -9,16 +9,22 @@ import { Observable } from 'rxjs';
 })
 export class DesktopiconsComponent implements OnInit {
   aboutActive: boolean;
+  practicalActive: boolean;
 
   constructor(private windows: WindowsService) {
   }
 
   ngOnInit(): void {
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
+    this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
   }
 
   clickAbout(){
     this.windows.editAbout(true);
+  }
+
+  clickPractical(){
+    this.windows.editPractical(true);
   }
 
 }

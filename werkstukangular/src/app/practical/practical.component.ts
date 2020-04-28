@@ -1,12 +1,12 @@
-import { Component, OnInit, HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { WindowsService } from '../windows.service';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-practical',
+  templateUrl: './practical.component.html',
+  styleUrls: ['./practical.component.css']
 })
-export class AboutComponent implements OnInit {
+export class PracticalComponent implements OnInit {
   zindex: number;
 
   constructor(private eRef: ElementRef, private renderer: Renderer2, private windows: WindowsService) {
@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
   }
 
   public close(){
-    this.windows.editAbout(false);
+    this.windows.editPractical(false);
   }
 
   @HostListener('document:click', ['$event'])

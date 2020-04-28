@@ -9,6 +9,7 @@ import { DesktopiconsComponent } from './desktopicons/desktopicons.component';
 import { AboutComponent } from './about/about.component';
 import { WindowsService } from './windows.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PracticalComponent } from './practical/practical.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     LoadingComponent,
     TaskbarComponent,
     DesktopiconsComponent,
-    AboutComponent
+    AboutComponent,
+    PracticalComponent
   ],
   imports: [
     BrowserModule,
