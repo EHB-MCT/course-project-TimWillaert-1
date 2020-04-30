@@ -10,13 +10,16 @@ export class DesktopiconsComponent implements OnInit {
   zindex: number;
   aboutzindex: number;
   practicalzindex: number;
+  partnerszindex: number;
   aboutActive: boolean;
   practicalActive: boolean;
+  partnersActive: boolean;
 
   constructor(private windows: WindowsService, private renderer: Renderer2) {}
 
   ngOnInit(): void {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
+
     this.windows.observeAboutZ.subscribe(aboutzindex => this.aboutzindex = aboutzindex);
     this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
 
@@ -34,6 +37,12 @@ export class DesktopiconsComponent implements OnInit {
     this.windows.editPractical(true);
     this.windows.editZ(this.zindex + 1);
     this.windows.editPracticalZ(this.zindex + 2);
+  }
+
+  clickPartners(){
+    this.windows.editPartners(true);
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editPartnersZ(this.zindex + 2);
   }
 
 }

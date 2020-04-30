@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { WindowsService } from './windows.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PracticalComponent } from './practical/practical.component';
+import { PartnersComponent } from './partners/partners.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { PracticalComponent } from './practical/practical.component';
     TaskbarComponent,
     DesktopiconsComponent,
     AboutComponent,
-    PracticalComponent
+    PracticalComponent,
+    PartnersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [WindowsService],
   bootstrap: [AppComponent]

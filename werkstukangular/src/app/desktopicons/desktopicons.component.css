@@ -5,9 +5,15 @@ ul{
 }
 
 li{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
-  padding: 5px;
+  padding: 7px;
+  border: 1.5px dotted transparent;
+}
+
+li:focus{
+  border: 1.5px dotted darkgray;
+  outline: 0;
 }
 
 li img{

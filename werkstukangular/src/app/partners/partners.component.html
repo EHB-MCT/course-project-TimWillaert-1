@@ -1,0 +1,23 @@
+<div class="partners" id="partners" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': partnerszindex}">
+  <div class="header" cdkDragHandle>
+    <p>Partners</p>
+    <div class="close" (click)="close()">
+      X
+    </div>
+  </div>
+  <div class="content">
+    <div class="gold">
+      <h2>Gold</h2>
+      <img *ngFor='let partner of gold' src="data:image/png;base64,{{partner.img}}">
+    </div>
+    <div class="silver">
+      <h2>Silver</h2>
+      <img *ngFor='let partner of silver' src="data:image/png;base64,{{partner.img}}">
+    </div>
+    <div class="bronze">
+      <h2>Bronze</h2>
+      <img *ngFor='let partner of bronze' src="data:image/png;base64,{{partner.img}}">
+    </div>
+  </div>
+</div>
+

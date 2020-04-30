@@ -6,7 +6,7 @@
   position: absolute;
   bottom: 0;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   box-shadow: 0px -2px 0px #ECECEC;
 }
@@ -26,10 +26,6 @@
 .start img{
   height: 30px;
   padding-right: 10px;
-}
-
-.clicked{
-  border-style: inset;
 }
 
 .startbar{
@@ -106,6 +102,7 @@
   justify-content: center;
   align-items: center;
   font-size: 12px;
+  margin-left: auto;
 }
 
 span{
@@ -114,4 +111,44 @@ span{
 
 .switch p{
   margin-left: 20px;
+}
+
+.windows{
+  list-style: none;
+  display: flex;
+}
+
+.windows button{
+  padding: 6px 15px;
+  margin: 0px 5px;
+  background-color: #C0C0BF;
+  display: flex;
+  align-items: center;
+}
+
+.windows button:focus{
+  outline: 0;
+}
+
+.windows img{
+  width: 20px;
+  margin-right: 15px;
+}
+
+.clicked{
+  border-style: inset;
+}
+
+.clicked:hover{
+  cursor: default;
+}
+
+.line{
+  height: 100%;
+  margin: 0 15px;
+  border-style: outset;
+}
+
+button:hover{
+  cursor: pointer;
 }

@@ -1,21 +1,21 @@
 <ul>
-  <li>
+  <li tabindex="1" cdkDrag cdkDragBoundary=".desktop">
     <img src="assets/img/program.png">
     <p>Program</p>
   </li>
-  <li (dblclick)="clickPractical()">
+  <li (dblclick)="clickPractical()" tabindex="2" cdkDrag cdkDragBoundary=".desktop">
     <img src="assets/img/practical.png">
     <p>Practical</p>
   </li>
-  <li (dblclick)="clickAbout()">
+  <li (dblclick)="clickAbout()" tabindex="3" cdkDrag cdkDragBoundary=".desktop">
     <img src="assets/img/about.png">
     <p>About</p>
   </li>
-  <li>
+  <li (dblclick)="clickPartners()" tabindex="4" cdkDrag cdkDragBoundary=".desktop">
     <img src="assets/img/partners.png">
     <p>Partners</p>
   </li>
-  <li class="tickets">
+  <li class="tickets" tabindex="5" cdkDrag cdkDragBoundary=".desktop">
     <img src="assets/img/tickets.png">
     <p>Get Tickets</p>
   </li>

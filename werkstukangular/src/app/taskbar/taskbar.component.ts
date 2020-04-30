@@ -8,7 +8,16 @@ import { WindowsService } from '../windows.service';
   styleUrls: ['./taskbar.component.css']
 })
 export class TaskbarComponent implements OnInit {
+  zindex: number;
+  aboutzindex: number;
+  practicalzindex: number;
+  partnerszindex: number;
+
   clicked = false;
+
+  aboutActive: boolean;
+  practicalActive: boolean;
+  partnersActive: boolean;
 
   formattedTime: string = formatDate(new Date(), 'hh:mm a', 'en-US');
 
@@ -16,6 +25,14 @@ export class TaskbarComponent implements OnInit {
     setInterval(() => {
       this.formattedTime = formatDate(new Date(), 'hh:mm a', 'en-US');
     }, 1000);
+    this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
+    this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
+    this.windows.observePartners.subscribe(partnersActive => this.partnersActive = partnersActive);
+
+    this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
+    this.windows.observeAboutZ.subscribe(aboutzindex => this.aboutzindex = aboutzindex);
+    this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
+    this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
   }
 
   startClick(){
@@ -25,11 +42,22 @@ export class TaskbarComponent implements OnInit {
   clickAbout(){
     this.windows.editAbout(true);
     this.clicked = false;
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editAboutZ(this.zindex + 2);
   }
 
   clickPractical(){
     this.windows.editPractical(true);
     this.clicked = false;
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editPracticalZ(this.zindex + 2);
+  }
+
+  clickPartners(){
+    this.windows.editPartners(true);
+    this.clicked = false;
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editPartnersZ(this.zindex + 2);
   }
 
   @HostListener('document:click', ['$event'])

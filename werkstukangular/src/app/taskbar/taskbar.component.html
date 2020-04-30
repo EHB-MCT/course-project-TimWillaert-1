@@ -8,7 +8,7 @@
       <li><img src="assets/img/program.png"><span>P</span>rogram</li>
       <li (click)="clickPractical()"><img src="assets/img/practical.png"><span>P</span>ractical</li>
       <li (click)="clickAbout()"><img src="assets/img/about.png"><span>A</span>bout</li>
-      <li><img src="assets/img/partners.png"><span>P</span>artners</li>
+      <li (click)="clickPartners()"><img src="assets/img/partners.png"><span>P</span>artners</li>
       <hr>
       <li class="switch"><p>Switch to Mac</p></li>
     </ul>
@@ -18,6 +18,12 @@
   <button class="start" (click)="startClick()" [ngClass]="clicked ? 'clicked' : ''">
     <img src="assets/img/taskbarlogo.png">Start
   </button>
+  <span class="line"></span>
+  <div class="windows">
+    <button *ngIf="practicalActive" (click)="clickPractical()" [ngClass]="practicalzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/practical.png">Practical</button>
+    <button *ngIf="aboutActive" (click)="clickAbout()" [ngClass]="aboutzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/about.png">About</button>
+    <button *ngIf="partnersActive" (click)="clickPartners()" [ngClass]="partnerszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/partners.png">Partners</button>
+  </div>
   <div class="time inset">
     <p>{{formattedTime}}</p>
   </div>
