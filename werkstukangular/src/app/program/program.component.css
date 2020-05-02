@@ -1,0 +1,198 @@
+.program{
+  position: absolute;
+  left: 12%;
+  top: 5%;
+  background-color: #C0C0BF;
+  border-style: outset;
+}
+
+.header{
+  width: 99%;
+  margin-left: 0.5%;
+  margin-top: 0.5%;
+  height: 35px;
+  background-color: rgb(121, 121, 121);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header p{
+  color: white;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.close{
+  height: 25px;
+  width: 25px;
+  background-color: #C0C0BF;
+  margin-right: 5px;
+  border-style: outset;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
+.content{
+  text-align: center;
+}
+
+img{
+  height: 12vh;
+  padding: 30px;
+  margin-top: 25px;
+}
+
+p{
+  font-size: 12px;
+  text-align: left;
+  padding: 20px;
+}
+
+.loading{
+  width: 300px;
+  height: 30px;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+  margin: 25px;
+}
+
+.loadcontainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left:  25%;
+  animation: loading 3.5s infinite steps(15);
+}
+
+.loaditem{
+  background-color: black;
+  height: 80%;
+  width: 4%;
+  display: inline-block;
+  margin: 0 1%;
+}
+
+@keyframes loading{
+  0%{
+    left: -30%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+
+.error{
+  padding: 25px;
+  padding-top: 0;
+  animation: typing 3.5s steps(40, end);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.table{
+  display: grid;
+  grid-template-columns: 50px 30px auto;
+  grid-template-rows: 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px;
+  grid-template-areas:
+    "hr9 min0900 slot0900"
+    "hr9 min0930 slot0950"
+    "hr10 min1000 slot1000"
+    "hr10 min1030 slot1050"
+    "hr11 min1100 slot1100"
+    "hr11 min1130 slot1150"
+    "hr12 min1200 slot1200"
+    "hr12 min1230 slot1250"
+    "hr13 min1300 slot1300"
+    "hr13 min1330 slot1350"
+    "hr14 min1400 slot1400"
+    "hr14 min1430 slot1450"
+    "hr15 min1500 slot1500"
+    "hr15 min1530 slot1550"
+    "hr16 min1600 slot1600"
+    "hr16 min1630 slot1650"
+    "hr17 min1700 slot1700"
+    "hr17 min1730 slot1750"
+    "hr18 min1800 slot1800"
+    "hr18 min1830 slot1850";
+  padding-top: 0;
+  border: 1.5px solid black;
+  border-bottom: 2px solid black;
+  margin: 20px;
+  margin-top: 0;
+  width: 700px;
+  background-color: #e9e942;
+}
+
+.hr{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C0C0BF;
+  border-bottom: 1px solid black;
+}
+
+.hr h2{
+  font-size: 17px;
+}
+
+.min{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: span 1;
+  background-color: #C0C0BF;
+  padding-right: 5px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.min h3{
+  font-size: 12px;
+  font-weight: normal;
+  text-align: right;
+  margin: 2px 0;
+}
+
+.slot{
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px dotted rgb(121, 121, 121);
+}
+
+.slot p{
+  padding: 0;
+  font-size: 10px;
+  margin: 4px 0;
+}
+
+.name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.sessioncolor{
+  height: 80%;
+  width: 7px;
+  margin-left: 20px;
+  margin-right: 10px;
+  background-color: blue;
+}

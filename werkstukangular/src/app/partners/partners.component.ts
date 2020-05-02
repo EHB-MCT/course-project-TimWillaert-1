@@ -13,6 +13,8 @@ export class PartnersComponent implements OnInit, AfterViewInit {
   gold: any = {};
   silver: any = {};
   bronze: any = {};
+  isLoading: boolean = true;
+  error: boolean = false;
 
   constructor(private eRef: ElementRef, private windows: WindowsService, private http: HttpClient) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
@@ -25,7 +27,12 @@ export class PartnersComponent implements OnInit, AfterViewInit {
         this.gold = data.data.Gold;
         this.silver = data.data.Silver;
         this.bronze = data.data.Bronze;
-    });
+        this.isLoading = false;
+    },
+    (error) => {
+      this.error = true;
+    }
+    );
   }
 
   ngAfterViewInit(){

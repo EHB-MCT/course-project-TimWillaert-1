@@ -120,7 +120,7 @@ span{
 
 .windows button{
   padding: 6px 15px;
-  margin: 0px 5px;
+  margin-right: 5px;
   background-color: #C0C0BF;
   display: flex;
   align-items: center;

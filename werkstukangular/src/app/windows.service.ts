@@ -17,6 +17,9 @@ export class WindowsService {
   private partnersZ = new BehaviorSubject<number>(1);
   observePartnersZ = this.partnersZ.asObservable();
 
+  private programZ = new BehaviorSubject<number>(1);
+  observeProgramZ = this.programZ.asObservable();
+
   private aboutActive = new BehaviorSubject<boolean>(false);
   observeAbout = this.aboutActive.asObservable();
 
@@ -25,6 +28,9 @@ export class WindowsService {
 
   private partnersActive = new BehaviorSubject<boolean>(false);
   observePartners = this.partnersActive.asObservable();
+
+  private programActive = new BehaviorSubject<boolean>(false);
+  observeProgram = this.programActive.asObservable();
 
   constructor() { }
 
@@ -38,6 +44,10 @@ export class WindowsService {
 
   editPracticalZ(value: number){
     this.practicalZ.next(value);
+  }
+
+  editProgramZ(value: number){
+    this.programZ.next(value);
   }
 
   editPartnersZ(value: number){
@@ -54,6 +64,10 @@ export class WindowsService {
 
   editPartners(value: boolean){
     this.partnersActive.next(value);
+  }
+
+  editProgram(value: boolean){
+    this.programActive.next(value);
   }
 
 }

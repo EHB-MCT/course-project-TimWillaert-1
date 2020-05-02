@@ -1,0 +1,45 @@
+<div class="program" id="program" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': programzindex}">
+  <div class="header" cdkDragHandle>
+    <p>Program</p>
+    <div class="close" (click)="close()">
+      X
+    </div>
+  </div>
+  <div class="content">
+    <div class="loading" *ngIf="isLoading">
+      <div class="loadcontainer">
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+      </div>
+    </div>
+    <div *ngIf="error">
+      <p class="error">No connection could be made. Please ensure you are connected to the internet.</p>
+    </div>
+    <div *ngIf="!isLoading">
+      <div>
+        <p>Friday October 2nd, 2020</p>
+      </div>
+      <div class="table">
+          <div *ngFor="let session of data" [ngStyle]="{'grid-area': getArea(session.time_start, session.time_end)}" class="slot">
+            <div class="sessioncolor" [ngStyle]="{'background-color': getColor(session.id)}">
+
+            </div>
+            <div class="name">
+              <p *ngFor="let slot of getSlots(session.time_start, session.time_end)">{{session.speaker.name}}</p>
+            </div>
+          </div>
+          <div class="slot" *ngFor="let slot of remainingSlots">
+            <!-- filler slots to get the dotted borders -->
+          </div>
+          <div class="hr" *ngFor="let hour of hours" [ngStyle]="{'grid-area': 'hr'+hour}">
+            <h2>{{hour}}</h2>
+          </div>
+          <div class="min" *ngFor="let minute of minutes" [ngStyle]="{'grid-area': 'min'+minute}">
+            <h3>{{":" + (minute | slice:2:4)}}</h3>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,18 +6,31 @@
     </div>
   </div>
   <div class="content">
-    <div class="gold">
-      <h2>Gold</h2>
-      <img *ngFor='let partner of gold' src="data:image/png;base64,{{partner.img}}">
+    <div class="loading" *ngIf="isLoading">
+      <div class="loadcontainer">
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+      </div>
     </div>
-    <div class="silver">
-      <h2>Silver</h2>
-      <img *ngFor='let partner of silver' src="data:image/png;base64,{{partner.img}}">
+    <div *ngIf="error">
+      <p class="error">No connection could be made. Please ensure you are connected to the internet.</p>
     </div>
-    <div class="bronze">
-      <h2>Bronze</h2>
-      <img *ngFor='let partner of bronze' src="data:image/png;base64,{{partner.img}}">
+    <div *ngIf="!isLoading" class="extrapadding">
+      <div class="gold">
+        <h2>Gold</h2>
+        <img *ngFor='let partner of gold' src="data:image/png;base64,{{partner.img}}">
+      </div>
+      <div class="silver">
+        <h2>Silver</h2>
+        <img *ngFor='let partner of silver' src="data:image/png;base64,{{partner.img}}">
+      </div>
+      <div class="bronze">
+        <h2>Bronze</h2>
+        <img *ngFor='let partner of bronze' src="data:image/png;base64,{{partner.img}}">
+      </div>
     </div>
-  </div>
+    </div>
 </div>
 

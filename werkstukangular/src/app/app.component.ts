@@ -12,11 +12,13 @@ export class AppComponent implements AfterViewInit{
   aboutActive: boolean;
   practicalActive: boolean;
   partnersActive: boolean;
+  programActive: boolean;
 
   constructor(private windows: WindowsService){
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
     this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
     this.windows.observePartners.subscribe(partnersActive => this.partnersActive = partnersActive);
+    this.windows.observeProgram.subscribe(programActive => this.programActive = programActive);
   }
 
   ngAfterViewInit(){

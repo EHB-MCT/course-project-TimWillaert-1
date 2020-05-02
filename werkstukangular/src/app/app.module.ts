@@ -12,6 +12,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PracticalComponent } from './practical/practical.component';
 import { PartnersComponent } from './partners/partners.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProgramComponent } from './program/program.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     DesktopiconsComponent,
     AboutComponent,
     PracticalComponent,
-    PartnersComponent
+    PartnersComponent,
+    ProgramComponent
   ],
   imports: [
     BrowserModule,
