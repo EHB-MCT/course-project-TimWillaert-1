@@ -24,8 +24,8 @@
 }
 
 .close{
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background-color: #C0C0BF;
   margin-right: 5px;
   border-style: outset;
@@ -43,12 +43,6 @@
   text-align: center;
 }
 
-img{
-  height: 12vh;
-  padding: 30px;
-  margin-top: 25px;
-}
-
 p{
   font-size: 12px;
   text-align: left;
@@ -61,7 +55,7 @@ p{
   border: 1px solid black;
   position: relative;
   overflow: hidden;
-  margin: 25px;
+  margin: 20px;
 }
 
 .loadcontainer{
@@ -92,7 +86,7 @@ p{
 }
 
 .error{
-  padding: 25px;
+  padding: 20px;
   padding-top: 0;
   animation: typing 3.5s steps(40, end);
   white-space: nowrap;

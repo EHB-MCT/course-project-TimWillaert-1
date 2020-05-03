@@ -26,7 +26,7 @@ export class ProgramComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/werkstuk-TimWillaert/werkstuk/public/api/sessions')
+    this.http.get('https://backend-timw.herokuapp.com/api/sessions')
     .subscribe((data: any = {}) => {
         for(const session of data.data){
           this.data.push(session);

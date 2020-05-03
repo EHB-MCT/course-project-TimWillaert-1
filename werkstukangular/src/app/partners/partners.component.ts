@@ -22,7 +22,7 @@ export class PartnersComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/werkstuk-TimWillaert/werkstuk/public/api/partners')
+    this.http.get('https://backend-timw.herokuapp.com/api/partners')
     .subscribe((data: any = {}) => {
         this.gold = data.data.Gold;
         this.silver = data.data.Silver;
