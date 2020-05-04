@@ -1,0 +1,228 @@
+.tickets{
+  position: absolute;
+  left: 15%;
+  top: 3%;
+  background-color: #C0C0BF;
+  border-style: outset;
+}
+
+.container{
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+.header{
+  width: 99%;
+  margin-left: 0.5%;
+  margin-top: 0.5%;
+  height: 35px;
+  background-color: purple;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header p{
+  color: white;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.close{
+  height: 20px;
+  width: 20px;
+  background-color: #C0C0BF;
+  margin-right: 5px;
+  border-style: outset;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
+.content{
+  text-align: center;
+}
+
+p{
+  font-size: 12px;
+  text-align: left;
+  padding: 20px;
+}
+
+.loading{
+  width: 300px;
+  height: 30px;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.loadcontainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: -20%;
+  animation: loading 3.5s infinite steps(15);
+}
+
+.loaditem{
+  background-color: black;
+  height: 80%;
+  width: 4%;
+  display: inline-block;
+  margin: 0 1%;
+}
+
+@keyframes loading{
+  0%{
+    left: -30%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+
+.error{
+  padding: 20px;
+  padding-top: 0;
+  animation: typing 3.5s steps(40, end);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.pricing{
+  display: flex;
+}
+
+.pricing div{
+  border-style: inset;
+  margin: 0 20px;
+  background-color: lightgray;
+  padding: 30px;
+  text-align: right;
+}
+
+.pricing h3{
+  margin-top: 30px;
+  color: #e41788;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.pricing h2{
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.pricing h4{
+  font-weight: normal;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.disabled{
+  opacity: 0.3;
+}
+
+.discounts{
+  padding: 30px 20px;
+}
+
+.discounts p{
+  padding: 0;
+  font-size: 10px;
+}
+
+button{
+  background-color: #C0C0BF;
+  border-style: outset;
+  padding: 10px;
+  font-size: 12px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.price h3{
+  color: #e41788;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.addperson{
+  background-color: #C0C0BF;
+  border-style: outset;
+  margin: 20px 0 40px 0;
+  padding: 10px 0;
+  width: calc(100% - 40px);
+  font-size: 12px;
+}
+
+.addperson:focus{
+  outline: 0;
+}
+
+.addperson:active, .price button:active{
+  border-style: inset;
+}
+
+.addperson:hover{
+  cursor: pointer;
+}
+
+.person{
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+input, select{
+  background-color: lightgray;
+  padding: 10px;
+  font-size: 12px;
+  border-style: none;
+  border: 1px solid darkgray;
+}
+
+h5{
+  font-size: 10px;
+  color: rgb(124, 124, 124);
+  font-weight: normal;
+  margin-top: 10px;
+}
+
+.price{
+  text-align: right;
+  margin-right: 20px;
+  padding-bottom: 20px;
+}
+
+.price button{
+  margin: 20px 0;
+}
+
+.price button:focus{
+  outline: 0;
+}
+
+#alignright{
+  text-align: right;
+  padding: 0;
+}

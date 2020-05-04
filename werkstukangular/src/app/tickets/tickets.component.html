@@ -1,0 +1,57 @@
+<div class="tickets" id="tickets" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': ticketszindex}">
+  <div class="header" cdkDragHandle>
+    <p>Tickets</p>
+    <div class="close" (click)="close()">
+      X
+    </div>
+  </div>
+  <div class="content">
+    <div class="loading" *ngIf="isLoading">
+      <div class="loadcontainer">
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+      </div>
+    </div>
+    <div *ngIf="error">
+      <p class="error">No connection could be made. Please ensure the back-end is up and running.</p>
+    </div>
+    <div *ngIf="!isLoading" class="container">
+      <p>Pricing</p>
+      <div class="pricing">
+        <div *ngFor="let ticket of data" [ngClass]="{'disabled': ticket.open == 0}">
+          <h2>{{ticket.name}}</h2>
+          <h4>{{ticket.description}}</h4>
+          <h3>{{ticket.price}} EUR</h3>
+        </div>
+      </div>
+      <div class="discounts">
+        <p>Students and teachers can visit for free</p>
+        <p>You receive a 10% discount for a group of 6+ people</p>
+      </div>
+      <form action="#">
+        <div class="person" *ngFor="let person of people">
+          <input type="text" placeholder="Name" name="name[]" required>
+          <input type="email" placeholder="Email" name="email[]" required>
+          <select name="ticket" id="ticket" class="ticket" (change)="updatePrice()" required>
+            <ng-container *ngFor="let ticket of data">
+              <option value={{ticket.price}} [disabled]="!ticket.open">{{ticket.name}}</option>
+            </ng-container>
+            <option value="0">Student/Teacher</option>
+          </select>
+          <div class="close" (click)="removePerson($event)">
+            X
+          </div>
+      </div>
+      <button class="addperson" (click)="addPerson()" type="button">+ Add a person</button>
+      <div class="price">
+        <p id="alignright">Total</p>
+        <h5 *ngIf="isDiscounted">10% discount</h5>
+        <h3>{{convertedPrice}} EUR</h3>
+        <button [disabled]="!canContinue" type="submit">Check-out</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

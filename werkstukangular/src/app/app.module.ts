@@ -13,6 +13,7 @@ import { PracticalComponent } from './practical/practical.component';
 import { PartnersComponent } from './partners/partners.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgramComponent } from './program/program.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProgramComponent } from './program/program.component';
     AboutComponent,
     PracticalComponent,
     PartnersComponent,
-    ProgramComponent
+    ProgramComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,

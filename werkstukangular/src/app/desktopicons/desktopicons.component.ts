@@ -12,10 +12,13 @@ export class DesktopiconsComponent implements OnInit {
   practicalzindex: number;
   partnerszindex: number;
   programzindex: number;
+  ticketszindex: number;
+
   aboutActive: boolean;
   practicalActive: boolean;
   partnersActive: boolean;
   programActive: boolean;
+  ticketsActive: boolean;
 
   constructor(private windows: WindowsService) {}
 
@@ -25,10 +28,12 @@ export class DesktopiconsComponent implements OnInit {
     this.windows.observeAboutZ.subscribe(aboutzindex => this.aboutzindex = aboutzindex);
     this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
+    this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
 
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
     this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
     this.windows.observeProgram.subscribe(programActive => this.programActive = programActive);
+    this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
   }
 
   clickAbout(){
@@ -53,6 +58,12 @@ export class DesktopiconsComponent implements OnInit {
     this.windows.editProgram(true);
     this.windows.editZ(this.zindex + 1);
     this.windows.editProgramZ(this.zindex + 2);
+  }
+
+  clickTickets(){
+    this.windows.editTickets(true);
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editTicketsZ(this.zindex + 2);
   }
 
 }

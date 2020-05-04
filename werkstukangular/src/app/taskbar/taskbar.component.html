@@ -4,7 +4,7 @@
   </div>
   <div class="startlist">
     <ul>
-      <li><img src="assets/img/tickets.png"><span>G</span>et Tickets</li>
+      <li (click)="clickTickets()"><img src="assets/img/tickets.png"><span>G</span>et Tickets</li>
       <li (click)="clickProgram()"><img src="assets/img/program.png"><span>P</span>rogram</li>
       <li (click)="clickPractical()"><img src="assets/img/practical.png"><span>P</span>ractical</li>
       <li (click)="clickAbout()"><img src="assets/img/about.png"><span>A</span>bout</li>
@@ -24,6 +24,7 @@
     <button *ngIf="practicalActive" (click)="clickPractical()" [ngClass]="practicalzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/practical.png">Practical</button>
     <button *ngIf="aboutActive" (click)="clickAbout()" [ngClass]="aboutzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/about.png">About</button>
     <button *ngIf="partnersActive" (click)="clickPartners()" [ngClass]="partnerszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/partners.png">Partners</button>
+    <button *ngIf="ticketsActive" (click)="clickTickets()" [ngClass]="ticketszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/tickets.png">Tickets</button>
   </div>
   <div class="time inset">
     <p>{{formattedTime}}</p>
