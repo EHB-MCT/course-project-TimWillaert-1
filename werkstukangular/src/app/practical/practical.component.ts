@@ -23,16 +23,22 @@ export class PracticalComponent implements OnInit, AfterViewInit {
     this.windows.editPracticalZ(this.zindex + 2);
   }
 
-  public close(){
+  close(){
     this.windows.editPractical(false);
+  }
+
+  min(){
+    this.practicalzindex = -999;
+    this.windows.editPracticalZ(-999);
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      this.windows.editZ(this.zindex + 1);
-      this.windows.editPracticalZ(this.zindex + 2);
+      if(event.target.className != "min"){
+        this.windows.editZ(this.zindex + 1);
+        this.windows.editPracticalZ(this.zindex + 2);
+      }
     }
   }
-
 }

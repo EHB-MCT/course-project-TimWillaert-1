@@ -80,16 +80,23 @@ export class TicketsComponent implements OnInit {
     this.windows.editTicketsZ(this.zindex + 2);
   }
 
-  public close(){
+  close(){
     this.windows.editTickets(false);
+  }
+
+  min(){
+    this.ticketszindex = -999;
+    this.windows.editTicketsZ(-999);
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      this.windows.editZ(this.zindex + 1);
-      this.windows.editTicketsZ(this.zindex + 2);
-    }
+      if(event.target.className != "min"){
+        this.windows.editZ(this.zindex + 1);
+        this.windows.editAboutZ(this.zindex + 2);
+      }
+  }
   }
 
 }

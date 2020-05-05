@@ -55,16 +55,23 @@ export class ProgramComponent implements OnInit {
     this.windows.editProgramZ(this.zindex + 2);
   }
 
-  public close(){
+  close(){
     this.windows.editProgram(false);
+  }
+
+  min(){
+    this.programzindex = -999;
+    this.windows.editProgramZ(-999);
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      this.windows.editZ(this.zindex + 1);
-      this.windows.editProgramZ(this.zindex + 2);
-    }
+      if(event.target.className != "minimize"){
+        this.windows.editZ(this.zindex + 1);
+        this.windows.editProgramZ(this.zindex + 2);
+      }
+  }
   }
 
   getArea(time_start, time_end){

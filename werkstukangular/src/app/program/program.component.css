@@ -23,7 +23,11 @@
   padding: 0;
 }
 
-.close{
+.operations{
+  display: flex;
+}
+
+.close, .minimize{
   height: 20px;
   width: 20px;
   background-color: #C0C0BF;
@@ -35,7 +39,7 @@
   justify-content: center;
 }
 
-.close:hover{
+.close:hover, .minimize:hover{
   cursor: pointer;
 }
 

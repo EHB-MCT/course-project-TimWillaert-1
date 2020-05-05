@@ -23,16 +23,22 @@ export class AboutComponent implements OnInit, AfterViewInit {
     this.windows.editAboutZ(this.zindex + 2);
   }
 
-  public close(){
+  close(){
     this.windows.editAbout(false);
+  }
+
+  min(){
+    this.aboutzindex = -999;
+    this.windows.editAboutZ(-999);
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      this.windows.editZ(this.zindex + 1);
-      this.windows.editAboutZ(this.zindex + 2);
+        if(event.target.className != "min"){
+          this.windows.editZ(this.zindex + 1);
+          this.windows.editAboutZ(this.zindex + 2);
+        }
     }
   }
-
 }

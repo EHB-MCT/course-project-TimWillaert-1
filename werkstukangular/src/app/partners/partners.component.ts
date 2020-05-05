@@ -40,16 +40,24 @@ export class PartnersComponent implements OnInit, AfterViewInit {
     this.windows.editPartnersZ(this.zindex + 2);
   }
 
-  public close(){
+  close(){
     this.windows.editPartners(false);
+  }
+
+  min(){
+    this.partnerszindex = -999;
+    this.windows.editPartnersZ(-999);
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
-      this.windows.editZ(this.zindex + 1);
-      this.windows.editPartnersZ(this.zindex + 2);
+      if(event.target.className != "min"){
+        this.windows.editZ(this.zindex + 1);
+        this.windows.editPartnersZ(this.zindex + 2);
     }
+  }
+
   }
 
 }

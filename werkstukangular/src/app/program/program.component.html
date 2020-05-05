@@ -1,8 +1,13 @@
 <div class="program" id="program" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': programzindex}">
   <div class="header" cdkDragHandle>
     <p>Program</p>
-    <div class="close" (click)="close()">
-      X
+    <div class="operations">
+      <div class="minimize" (click)="min()">
+        &#95;
+      </div>
+      <div class="close" (click)="close()">
+        X
+      </div>
     </div>
   </div>
   <div class="content">
