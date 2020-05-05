@@ -1,16 +1,28 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<app-loading *ngIf="isLoading" (click)="start()"></app-loading>
+<div class="fadeIn" *ngIf="!isLoading"></div>
 <div class="app" *ngIf="!isLoading">
-  <div class="desktop">
+  <div class="desktop" *ngIf="errors.length < 50">
     <div class="logo">
       <img src="assets/img/blacklogo.png" alt="Dots&Pix">
       <h2>Design & Technology Conference Brussels 2020</h2>
     </div>
+    <button class="err" (click)="startErrors()" *ngIf="errors.length == 0">Don't click me</button>
     <app-desktopicons></app-desktopicons>
+    <app-error *ngFor="let error of errors"></app-error>
     <app-about *ngIf="aboutActive"></app-about>
     <app-practical *ngIf="practicalActive"></app-practical>
     <app-partners *ngIf="partnersActive"></app-partners>
     <app-program *ngIf="programActive"></app-program>
     <app-tickets *ngIf="ticketsActive"></app-tickets>
   </div>
-  <app-taskbar></app-taskbar>
+  <app-taskbar *ngIf="errors.length < 50"></app-taskbar>
+
+  <div class="bluescreen" *ngIf="errors.length == 50" (click)="resetErrors()">
+    <h2>Windows</h2>
+    <p>A fatal exception has occurred. The button clearly said "Don't click me".<br><br>
+    * Click anywhere to continue<br>
+    * Press Alt+F4 if you've had enough of this</p>
+    <p class="click">Click anywhere to continue _</p>
+  </div>
 </div>
+

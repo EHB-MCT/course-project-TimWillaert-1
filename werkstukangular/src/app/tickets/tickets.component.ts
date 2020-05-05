@@ -94,7 +94,7 @@ export class TicketsComponent implements OnInit {
     if(this.eRef.nativeElement.contains(event.target)) {
       if(event.target.className != "min"){
         this.windows.editZ(this.zindex + 1);
-        this.windows.editAboutZ(this.zindex + 2);
+        this.windows.editTicketsZ(this.zindex + 2);
       }
   }
   }

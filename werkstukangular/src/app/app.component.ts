@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { WindowsService } from './windows.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { WindowsService } from './windows.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent{
   title = 'Dots&Pix';
   isLoading = true;
   aboutActive: boolean;
@@ -14,6 +14,8 @@ export class AppComponent implements AfterViewInit{
   partnersActive: boolean;
   programActive: boolean;
   ticketsActive: boolean;
+  errors: any[] = [];
+  errorCount: number = 0;
 
   constructor(private windows: WindowsService){
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
@@ -23,9 +25,32 @@ export class AppComponent implements AfterViewInit{
     this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
   }
 
-  ngAfterViewInit(){
+  startErrors(){
+    this.errorCount += 1;
+    const interval = setInterval(() => {
+      this.errors.push(1);
+
+      if (this.errors.length == 50) {
+        clearInterval(interval);
+      }
+    }, 100);
+  }
+
+  resetErrors(){
+    this.errors = Array(0);
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/windowsboot.mp3";
+    audio.load();
+    audio.play();
+  }
+
+  start(){
+    this.playAudio();
     setTimeout(() => {
       this.isLoading = false;
-    }, 4000);
+    }, 1000);
   }
 }

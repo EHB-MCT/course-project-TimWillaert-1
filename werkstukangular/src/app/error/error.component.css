@@ -1,0 +1,46 @@
+.error{
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  background-color: #C0C0BF;
+  border-style: outset;
+}
+
+.header{
+  width: 99%;
+  margin-left: 0.5%;
+  margin-top: 0.5%;
+  height: 35px;
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header p{
+  color: white;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.close{
+  height: 20px;
+  width: 20px;
+  background-color: #C0C0BF;
+  margin-right: 5px;
+  border-style: outset;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
+p{
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 200px 10px 10px;
+}

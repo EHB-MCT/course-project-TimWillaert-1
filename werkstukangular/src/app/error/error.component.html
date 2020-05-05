@@ -1,0 +1,11 @@
+<div class="error" id="error" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': errorzindex, 'top': top+'%', 'left': left+'%'}">
+  <div class="header" cdkDragHandle>
+    <p>Error</p>
+      <div class="close" (click)="close()">
+        X
+      </div>
+  </div>
+  <div class="content">
+    <p>Error</p>
+  </div>
+</div>

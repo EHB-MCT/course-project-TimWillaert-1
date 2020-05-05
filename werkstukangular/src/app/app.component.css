@@ -24,3 +24,85 @@ h2{
   font-size: 10px;
   font-family: 'Windows';
 }
+
+.err{
+  position: absolute;
+  bottom: 20px;
+  right: 12px;
+  background-color: #C0C0BF;
+  font-size: 7px;
+  padding: 5px;
+}
+
+.err:hover{
+  cursor: pointer;
+}
+
+.err:focus{
+  outline: 0;
+}
+
+.bluescreen{
+  width: 70%;
+  margin-left: 15%;
+  height: 100%;
+  position: absolute;
+  background-color: blue;
+  z-index: 9999999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bluescreen h2{
+  background-color: grey;
+  color: blue;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.bluescreen p{
+  color: rgb(209, 209, 209);
+  margin-top: 50px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.bluescreen:hover{
+  cursor: pointer;
+}
+
+@keyframes loadIn {
+  0%{
+    height: 100%
+  }
+  100%{
+    height: 0%
+  }
+}
+
+.fadeIn{
+  height: 100%;
+  width: 70%;
+  margin-left: 15%;
+  background-color: black;
+  position: absolute;
+  z-index: 9999999;
+  animation: loadIn 4s steps(10);
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+@keyframes blink{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.click{
+  animation: blink 2s cubic-bezier(1,-1, 0, 2) infinite;
+}
