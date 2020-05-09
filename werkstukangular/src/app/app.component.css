@@ -106,3 +106,7 @@ h2{
 .click{
   animation: blink 2s cubic-bezier(1,-1, 0, 2) infinite;
 }
+
+.logo:hover{
+  cursor: pointer;
+}

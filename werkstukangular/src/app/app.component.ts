@@ -15,7 +15,6 @@ export class AppComponent{
   programActive: boolean;
   ticketsActive: boolean;
   errors: any[] = [];
-  errorCount: number = 0;
 
   constructor(private windows: WindowsService){
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
@@ -26,7 +25,6 @@ export class AppComponent{
   }
 
   startErrors(){
-    this.errorCount += 1;
     const interval = setInterval(() => {
       this.errors.push(1);
 
