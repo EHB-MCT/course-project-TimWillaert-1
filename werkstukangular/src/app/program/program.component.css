@@ -1,6 +1,6 @@
 #program{
-  left: 12%;
-  top: 5%;
+  left: 5%;
+  top: 3%;
 }
 
 .close, .minimize{
@@ -169,4 +169,139 @@
   margin-left: 20px;
   margin-right: 10px;
   background-color: blue;
+}
+
+span:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.detailcontent, .detailcontentsession{
+  padding: 20px;
+  padding-top: 0;
+  max-width: 40vw;
+}
+
+.detailcontentsession{
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.speakerheader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.speakerheader img{
+  height: 150px;
+  width: 30%;
+  object-fit: cover;
+  border: 1px solid black;
+}
+
+.detailcontent p, .detailcontentsession p{
+  padding: 20px;
+  margin: 40px 0;
+  background-color: lightgray;
+  border-style: inset;
+  font-size: 11px;
+}
+
+.detailcontentsession p{
+  margin: 30px 0 20px 0;
+}
+
+.speakerimages{
+  display: flex;
+  justify-content: space-between;
+}
+
+.speakerimages img{
+  height: 150px;
+  width: 30%;
+  object-fit: cover;
+  box-shadow: 2px 2px 0px #e41788;
+}
+
+.speakerkeywords{
+  text-align: left;
+}
+
+.speakerkeywords h1{
+  font-weight: normal;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+.speakerkeywords h2{
+  margin: 5px 30px;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.scroll{
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+
+button{
+  border-style: outset;
+  background-color: #C0C0BF;
+  padding: 10px;
+  font-size: 12px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+button:active{
+  border-style: inset;
+}
+
+button:focus{
+  outline: 0;
+}
+
+.return{
+  background-color: lightgray;
+  margin-bottom: 20px;
+}
+
+.sessionheader div{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.sessionheader h1{
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.sessionheader h2{
+  font-weight: normal;
+  font-size: 12px;
+  color: rgb(78, 78, 78);
+}
+
+.sessioninfo{
+  text-align: left;
+  margin-top: 30px;
+  margin-right: 40px;
+  display: inline-block;
+}
+
+.sessioninfo h3{
+  font-size: 10px;
+  color: #211452;
+  font-weight: normal;
+}
+
+.sessioninfo h4{
+  font-size: 12px;
+  color: #e41788;
+  margin-top: 5px;
+  font-weight: normal;
 }

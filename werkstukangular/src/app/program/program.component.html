@@ -1,7 +1,11 @@
 <div class="window" id="program" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': programzindex}">
   <div class="header" cdkDragHandle>
     <div class="headertitle">
-      <img src="assets/img/program.png"><p>Program</p>
+      <img src="assets/img/program.png">
+      <p *ngIf="showProgram">Program</p>
+      <p *ngIf="isLoading">Program</p>
+      <p *ngIf="showSpeaker">Program - {{speakerName}}</p>
+      <p *ngIf="showSession">Program - {{sessionName}}</p>
     </div>
     <div class="operations">
       <div class="minimize" (click)="min()">
@@ -24,7 +28,7 @@
     <div *ngIf="error">
       <p class="error">No connection could be made. Please ensure the back-end is up and running.</p>
     </div>
-    <div *ngIf="!isLoading">
+    <div *ngIf="showProgram">
       <div>
         <p>Friday October 2nd, 2020</p>
       </div>
@@ -34,7 +38,7 @@
 
             </div>
             <div class="name">
-              <p *ngFor="let slot of getSlots(session.time_start, session.time_end)">{{session.speaker.name}} - {{session.title}}</p>
+              <p *ngFor="let slot of getSlots(session.time_start, session.time_end)"><span (click)="clickSpeaker(session.speaker.id)">{{session.speaker.name}}</span> - <span (click)="clickSession(session.id)">{{session.title}}</span></p>
             </div>
           </div>
           <div class="slot" *ngFor="let slot of remainingSlots">
@@ -48,5 +52,55 @@
           </div>
       </div>
     </div>
+
+    <div *ngIf="showSpeaker" class="scroll">
+      <div class="return">
+        <span (click)="clickReturn()"><p>Return to program</p></span>
+      </div>
+      <div class="detailcontent">
+        <div class="speakerheader">
+          <img src="data:image/png;base64,{{speakerProfilePic}}">
+          <div class="speakerkeywords">
+            <h1>{{speakerName}}</h1>
+            <h2 *ngFor="let keyword of speakerKeywords | keyvalue">
+              {{keyword.value}}
+            </h2>
+          </div>
+          <a href="{{speakerWebsite}}" target="_blank"><button type="button">Website</button></a>
+        </div>
+
+        <p>{{speakerDescription}}</p>
+
+        <div class="speakerimages">
+          <ng-container *ngFor="let image of speakerKeyImages | keyvalue">
+            <img src="data:image/png;base64,{{image.value}}">
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showSession" class="scroll">
+      <div class="return">
+        <span (click)="clickReturn()"><p>Return to program</p></span>
+      </div>
+      <div class="detailcontentsession">
+        <div class="sessionheader">
+          <div>
+            <h1>{{sessionName}}</h1>
+            <h2>by <span (click)="clickSpeaker(sessionSpeakerID)">{{sessionSpeakerName}}</span></h2>
+          </div>
+        </div>
+        <div class="sessioninfo">
+          <h3>When?</h3>
+          <h4>{{sessionStart}} - {{sessionEnd}}</h4>
+        </div>
+        <div class="sessioninfo">
+          <h3>Where?</h3>
+          <h4>{{sessionLocation}}</h4>
+        </div>
+        <p>{{sessionDescription}}</p>
+      </div>
+    </div>
+
   </div>
 </div>
