@@ -1,35 +1,11 @@
-.tickets{
-  position: absolute;
+#tickets{
   left: 15%;
   top: 3%;
-  background-color: #C0C0BF;
-  border-style: outset;
 }
 
 .container{
   overflow-y: auto;
-  max-height: calc(100vh - 200px);
-}
-
-.header{
-  width: 99%;
-  margin-left: 0.5%;
-  margin-top: 0.5%;
-  height: 35px;
-  background-color: purple;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header p{
-  color: white;
-  margin-left: 5px;
-  padding: 0;
-}
-
-.operations{
-  display: flex;
+  max-height: calc(100vh - 150px);
 }
 
 .close, .min{
@@ -44,15 +20,11 @@
   justify-content: center;
 }
 
-.close:hover, .min:hover{
+.min:hover{
   cursor: pointer;
 }
 
-.content{
-  text-align: center;
-}
-
-p{
+.content p{
   font-size: 12px;
   text-align: left;
   padding: 20px;

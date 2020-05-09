@@ -1,6 +1,8 @@
-<div class="program" id="program" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': programzindex}">
+<div class="window" id="program" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': programzindex}">
   <div class="header" cdkDragHandle>
-    <p>Program</p>
+    <div class="headertitle">
+      <img src="assets/img/program.png"><p>Program</p>
+    </div>
     <div class="operations">
       <div class="minimize" (click)="min()">
         &#95;
@@ -32,7 +34,7 @@
 
             </div>
             <div class="name">
-              <p *ngFor="let slot of getSlots(session.time_start, session.time_end)">{{session.speaker.name}}</p>
+              <p *ngFor="let slot of getSlots(session.time_start, session.time_end)">{{session.speaker.name}} - {{session.title}}</p>
             </div>
           </div>
           <div class="slot" *ngFor="let slot of remainingSlots">

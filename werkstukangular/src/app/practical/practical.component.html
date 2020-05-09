@@ -1,6 +1,8 @@
-<div class="practical" id="practical" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': practicalzindex}">
+<div class="window" id="practical" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': practicalzindex}">
   <div class="header" cdkDragHandle>
-    <p>Practical</p>
+    <div class="headertitle">
+      <img src="assets/img/practical.png"><p>Practical</p>
+    </div>
     <div class="operations">
       <div class="min" (click)="min()">
         &#95;

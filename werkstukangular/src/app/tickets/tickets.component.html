@@ -1,6 +1,8 @@
-<div class="tickets" id="tickets" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': ticketszindex}">
+<div class="window" id="tickets" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': ticketszindex}">
   <div class="header" cdkDragHandle>
-    <p>Tickets</p>
+    <div class="headertitle">
+      <img src="assets/img/tickets.png"><p>Tickets</p>
+    </div>
     <div class="operations">
       <div class="min" (click)="min()">
         &#95;
@@ -45,7 +47,7 @@
             </ng-container>
             <option value="0">Student/Teacher</option>
           </select>
-          <div class="close" (click)="removePerson($event)">
+          <div class="close" (click)="removePerson($event)" style="margin-right: 0;">
             X
           </div>
       </div>

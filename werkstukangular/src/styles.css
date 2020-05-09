@@ -41,3 +41,57 @@ body{
   cursor: move;
 }
 
+.window{
+  position: absolute;
+  background-color: #C0C0BF;
+  border-style: outset;
+}
+
+.header{
+  width: 99%;
+  margin-left: 0.5%;
+  margin-top: 0.5%;
+  height: 35px;
+  background-image: linear-gradient(to right, #000180, #1083d0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header p{
+  color: white;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.operations{
+  display: flex;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
+.content{
+  text-align: center;
+}
+
+.headertitle img, .headertitle p{
+  padding: 0;
+}
+
+.headertitle img{
+  width: 20px;
+  margin-left: 10px;
+}
+
+.headertitle p{
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.headertitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
