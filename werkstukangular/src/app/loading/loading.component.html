@@ -1,14 +1,33 @@
-<img src="assets/img/windowslogo.png" alt="Dots&Pix">
+<ng-container *ngIf="OSName == 'Windows'">
+  <img src="assets/img/windowslogo.png" alt="Dots&Pix" *ngIf="OSName == 'Windows'">
 
-<div class="loading">
-  <div class="loadcontainer">
-    <div class="loaditem"></div>
-    <div class="loaditem"></div>
-    <div class="loaditem"></div>
-    <div class="loaditem"></div>
+  <div class="loading">
+    <div class="loadcontainer">
+      <div class="loaditem"></div>
+      <div class="loaditem"></div>
+      <div class="loaditem"></div>
+      <div class="loaditem"></div>
+    </div>
   </div>
-</div>
 
-<p class="click">Click to start</p>
+  <p class="click">Click to start</p>
 
-<p class="copyright">Copyright &copy; 1995</p>
+  <p class="copyright">Copyright &copy; 1995</p>
+</ng-container>
+
+<ng-container *ngIf="OSName == 'Mac'">
+  <div class="bordercontainer">
+    <img src="assets/img/maclogo.png" alt="Dots&Pix" *ngIf="OSName == 'Mac'">
+
+    <p *ngIf="OSName == 'Mac'">Starting up...</p>
+
+    <div class="loading">
+      <div class="loadcontainer">
+      </div>
+    </div>
+  </div>
+
+  <p class="click">Click to start</p>
+</ng-container>
+
+

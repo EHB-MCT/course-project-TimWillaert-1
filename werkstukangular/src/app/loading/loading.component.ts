@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WindowsService } from '../windows.service';
 
 @Component({
   selector: 'app-loading',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingComponent implements OnInit {
 
-  constructor() { }
+  OSName: string;
+
+  constructor(private windows: WindowsService) {
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
+  }
 
   ngOnInit(): void {
   }

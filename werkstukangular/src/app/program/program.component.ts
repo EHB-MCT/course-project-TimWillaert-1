@@ -28,9 +28,13 @@ export class ProgramComponent implements OnInit, AfterViewInit, AfterViewChecked
   speaker: any;
   session: any;
 
+  OSName: string;
+
   constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
 
   ngOnInit(): void {

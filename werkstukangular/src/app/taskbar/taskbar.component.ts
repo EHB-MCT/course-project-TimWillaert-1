@@ -25,6 +25,8 @@ export class TaskbarComponent implements OnInit {
 
   formattedTime: string = formatDate(new Date(), 'hh:mm a', 'en-US');
 
+  OSName: string;
+
   constructor(private eRef: ElementRef, private windows: WindowsService) {
     setInterval(() => {
       this.formattedTime = formatDate(new Date(), 'hh:mm a', 'en-US');
@@ -41,6 +43,12 @@ export class TaskbarComponent implements OnInit {
     this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
     this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
+  }
+
+  switchOS(OS){
+    this.windows.editOS(OS);
   }
 
   startClick(){

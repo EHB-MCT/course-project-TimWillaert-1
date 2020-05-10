@@ -21,9 +21,13 @@ export class TicketsComponent implements OnInit, AfterViewInit, AfterViewChecked
   isDiscounted: boolean = false;
   canContinue: boolean = false;
 
+  OSName: string;
+
   constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
 
   ngOnInit(): void {

@@ -1,22 +1,27 @@
 <ul id="desktopicons">
   <li (dblclick)="clickProgram()" tabindex="1" cdkDrag cdkDragBoundary=".desktop">
-    <img src="assets/img/program.png">
+    <img src="assets/img/program.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/programmac.png" *ngIf="OSName == 'Mac'">
     <p>Program</p>
   </li>
   <li (dblclick)="clickPractical()" tabindex="2" cdkDrag cdkDragBoundary=".desktop">
-    <img src="assets/img/practical.png">
+    <img src="assets/img/practical.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/practicalmac.png" *ngIf="OSName == 'Mac'">
     <p>Practical</p>
   </li>
   <li (dblclick)="clickAbout()" tabindex="3" cdkDrag cdkDragBoundary=".desktop">
-    <img src="assets/img/about.png">
+    <img src="assets/img/about.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/aboutmac.png" *ngIf="OSName == 'Mac'">
     <p>About</p>
   </li>
   <li (dblclick)="clickPartners()" tabindex="4" cdkDrag cdkDragBoundary=".desktop">
-    <img src="assets/img/partners.png">
+    <img src="assets/img/partners.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/partnersmac.png" *ngIf="OSName == 'Mac'">
     <p>Partners</p>
   </li>
   <li (dblclick)="clickTickets()" class="tickets" tabindex="5" cdkDrag cdkDragBoundary=".desktop">
-    <img src="assets/img/tickets.png">
+    <img src="assets/img/tickets.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/ticketsmac.png" *ngIf="OSName == 'Mac'">
     <p>Get Tickets</p>
   </li>
 </ul>

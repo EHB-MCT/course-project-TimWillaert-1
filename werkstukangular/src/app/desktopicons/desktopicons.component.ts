@@ -20,6 +20,8 @@ export class DesktopiconsComponent implements OnInit {
   programActive: boolean;
   ticketsActive: boolean;
 
+  OSName: string;
+
   constructor(private windows: WindowsService) {}
 
   ngOnInit(): void {
@@ -34,6 +36,8 @@ export class DesktopiconsComponent implements OnInit {
     this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
     this.windows.observeProgram.subscribe(programActive => this.programActive = programActive);
     this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
 
   clickAbout(){

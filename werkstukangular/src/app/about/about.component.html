@@ -1,5 +1,6 @@
 <div class="window" id="about" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': aboutzindex}">
-  <div class="header" cdkDragHandle>
+
+  <div class="header" cdkDragHandle *ngIf="OSName == 'Windows'">
     <div class="headertitle">
       <img src="assets/img/about.png"><p>About</p>
     </div>
@@ -12,6 +13,45 @@
       </div>
     </div>
   </div>
+
+  <div class="header" cdkDragHandle *ngIf="OSName == 'Mac'">
+    <div class="operations">
+      <div class="close" (click)="close()">
+        X
+      </div>
+      <div class="min" (click)="min()">
+        &#95;
+      </div>
+    </div>
+    <div class="rows">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="headertitle">
+      <p>About</p>
+    </div>
+    <div class="rows">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+  </div>
+
   <div class="content">
     <img src="assets/img/aboutlogo.png">
     <p>Dots & Pix is an annual design and technology conference organised by the city of Brussels.<br>

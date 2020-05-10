@@ -167,7 +167,7 @@
   background-color: black;
   position: absolute;
   z-index: 9999999;
-  animation: loadIn 4s steps(10);
+  animation: loadIn 3s steps(10);
   animation-fill-mode: forwards;
   pointer-events: none;
 }

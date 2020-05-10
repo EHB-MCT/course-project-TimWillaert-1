@@ -1,8 +1,8 @@
-<app-loading *ngIf="isLoading" (click)="start()" id="loading"></app-loading>
-<div class="fadeIn" *ngIf="!isLoading"></div>
-<div class="app" id="app" *ngIf="!isLoading">
+<!-- <app-loading *ngIf="isLoading" (click)="start()" id="loading"></app-loading>
+<div class="fadeIn" *ngIf="!isLoading"></div> -->
+<div class="app" id="app">
   <div class="desktop" *ngIf="errors.length < 50">
-    <div class="logo" (dblclick)="startErrors()">
+    <div class="logo" (dblclick)="startErrors()" *ngIf="OSName == 'Windows'">
       <img src="assets/img/blacklogo.png" alt="Dots&Pix">
       <h2>Design & Technology Conference Brussels 2020</h2>
     </div>

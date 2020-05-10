@@ -11,9 +11,13 @@ export class PracticalComponent implements OnInit, AfterViewInit, AfterViewCheck
   zindex: number;
   practicalzindex: number;
 
+  OSName: string;
+
   constructor(private eRef: ElementRef, private windows: WindowsService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
 
   ngOnInit(): void {

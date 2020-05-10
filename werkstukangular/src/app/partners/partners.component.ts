@@ -17,9 +17,13 @@ export class PartnersComponent implements OnInit, AfterViewInit, AfterViewChecke
   isLoading: boolean = true;
   error: boolean = false;
 
+  OSName: string;
+
   constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
+
+    this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
 
   ngOnInit(){
