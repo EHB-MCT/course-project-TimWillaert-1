@@ -4,8 +4,8 @@
       <img src="assets/img/program.png">
       <p *ngIf="showProgram">Program</p>
       <p *ngIf="isLoading">Program</p>
-      <p *ngIf="showSpeaker">Program - {{speakerName}}</p>
-      <p *ngIf="showSession">Program - {{sessionName}}</p>
+      <p *ngIf="showSpeaker">Program - {{speaker.name}}</p>
+      <p *ngIf="showSession">Program - {{session.title}}</p>
     </div>
     <div class="operations">
       <div class="minimize" (click)="min()">
@@ -59,20 +59,20 @@
       </div>
       <div class="detailcontent">
         <div class="speakerheader">
-          <img src="data:image/png;base64,{{speakerProfilePic}}">
+          <img src="data:image/png;base64,{{speaker.profilepic}}">
           <div class="speakerkeywords">
-            <h1>{{speakerName}}</h1>
-            <h2 *ngFor="let keyword of speakerKeywords | keyvalue">
+            <h1>{{speaker.name}}</h1>
+            <h2 *ngFor="let keyword of speaker.keywords | keyvalue">
               {{keyword.value}}
             </h2>
           </div>
-          <a href="{{speakerWebsite}}" target="_blank"><button type="button">Website</button></a>
+          <a href="{{speaker.website}}" target="_blank"><button type="button">Website</button></a>
         </div>
 
-        <p>{{speakerDescription}}</p>
+        <p>{{speaker.description}}</p>
 
         <div class="speakerimages">
-          <ng-container *ngFor="let image of speakerKeyImages | keyvalue">
+          <ng-container *ngFor="let image of speaker.keyimages | keyvalue">
             <img src="data:image/png;base64,{{image.value}}">
           </ng-container>
         </div>
@@ -86,19 +86,19 @@
       <div class="detailcontentsession">
         <div class="sessionheader">
           <div>
-            <h1>{{sessionName}}</h1>
-            <h2>by <span (click)="clickSpeaker(sessionSpeakerID)">{{sessionSpeakerName}}</span></h2>
+            <h1>{{session.title}}</h1>
+            <h2>by <span (click)="clickSpeaker(session.speaker.id)">{{session.speaker.name}}</span></h2>
           </div>
         </div>
         <div class="sessioninfo">
           <h3>When?</h3>
-          <h4>{{sessionStart}} - {{sessionEnd}}</h4>
+          <h4>{{session.time_start}} - {{session.time_end}}</h4>
         </div>
         <div class="sessioninfo">
           <h3>Where?</h3>
-          <h4>{{sessionLocation}}</h4>
+          <h4>{{session.location}}</h4>
         </div>
-        <p>{{sessionDescription}}</p>
+        <p>{{session.description}}</p>
       </div>
     </div>
 

@@ -8,6 +8,7 @@ import { TaskbarComponent } from './taskbar/taskbar.component';
 import { DesktopiconsComponent } from './desktopicons/desktopicons.component';
 import { AboutComponent } from './about/about.component';
 import { WindowsService } from './windows.service';
+import { DataService } from './data.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PracticalComponent } from './practical/practical.component';
 import { PartnersComponent } from './partners/partners.component';
@@ -35,7 +36,7 @@ import { ErrorComponent } from './error/error.component';
     DragDropModule,
     HttpClientModule
   ],
-  providers: [WindowsService],
+  providers: [WindowsService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

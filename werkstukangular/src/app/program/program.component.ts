@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { WindowsService } from '../windows.service';
-import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-program',
@@ -24,28 +24,16 @@ export class ProgramComponent implements OnInit {
   showSpeaker: boolean = false;
   showSession: boolean = false;
 
-  speakerName: string;
-  speakerDescription: string;
-  speakerWebsite: string;
-  speakerProfilePic: string;
-  speakerKeywords: {};
-  speakerKeyImages: {};
+  speaker: any;
+  session: any;
 
-  sessionName: string;
-  sessionSpeakerName: string;
-  sessionSpeakerID: number;
-  sessionDescription: string;
-  sessionStart: string;
-  sessionEnd: string;
-  sessionLocation: string;
-
-  constructor(private eRef: ElementRef, private windows: WindowsService, private http: HttpClient) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
   }
 
   ngOnInit(): void {
-    this.http.get('https://backend-timw.herokuapp.com/api/sessions')
+    this.api.getSessions()
     .subscribe((data: any = {}) => {
         for(const session of data.data){
           this.data.push(session);
@@ -56,6 +44,7 @@ export class ProgramComponent implements OnInit {
         this.showProgram = true;
     },
     (error) => {
+      console.log(error);
       this.error = true;
     }
     );
@@ -150,51 +139,34 @@ export class ProgramComponent implements OnInit {
     this.isLoading = true;
     this.showProgram = false;
     this.showSession = false;
-    this.http.get('https://backend-timw.herokuapp.com/api/speakers/'+id)
+    this.api.getSpeaker(id)
     .subscribe((data: any = {}) => {
-        this.fillSpeaker(data.data);
+        this.speaker = data.data;
         this.showSpeaker = true;
         this.isLoading = false;
     },
     (error) => {
+      console.log(error);
       this.error = true;
     }
     );
-  }
-
-  fillSpeaker(speaker){
-    this.speakerName = speaker.name;
-    this.speakerDescription = speaker.description;
-    this.speakerWebsite = speaker.website;
-    this.speakerProfilePic = speaker.profilepic;
-    this.speakerKeywords = speaker.keywords;
-    this.speakerKeyImages = speaker.keyimages;
   }
 
   clickSession(id){
     this.isLoading = true;
     this.showProgram = false;
     this.showSpeaker = false;
-    this.http.get('https://backend-timw.herokuapp.com/api/sessions/'+id)
+    this.api.getSession(id)
     .subscribe((data: any = {}) => {
-        this.fillSession(data.data);
+        this.session = data.data;
         this.showSession = true;
         this.isLoading = false;
     },
     (error) => {
+      console.log(error);
       this.error = true;
     }
     );
-  }
-
-  fillSession(session){
-    this.sessionName = session.title;
-    this.sessionDescription = session.description;
-    this.sessionLocation = session.location;
-    this.sessionStart = session.time_start;
-    this.sessionEnd = session.time_end;
-    this.sessionSpeakerID = session.speaker.id;
-    this.sessionSpeakerName = session.speaker.name;
   }
 
 }

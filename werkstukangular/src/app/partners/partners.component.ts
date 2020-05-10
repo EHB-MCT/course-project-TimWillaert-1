@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { WindowsService } from '../windows.service';
-import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-partners',
@@ -16,23 +16,23 @@ export class PartnersComponent implements OnInit, AfterViewInit {
   isLoading: boolean = true;
   error: boolean = false;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService, private http: HttpClient) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
   }
 
-  ngOnInit(): void {
-    this.http.get('https://backend-timw.herokuapp.com/api/partners')
-    .subscribe((data: any = {}) => {
-        this.gold = data.data.Gold;
-        this.silver = data.data.Silver;
-        this.bronze = data.data.Bronze;
-        this.isLoading = false;
-    },
-    (error) => {
-      this.error = true;
-    }
-    );
+  ngOnInit(){
+    this.api.getPartners()
+      .subscribe((data: any = {}) => {
+          this.gold = data.data.Gold;
+          this.silver = data.data.Silver;
+          this.bronze = data.data.Bronze;
+          this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.error = true;
+      });
   }
 
   ngAfterViewInit(){

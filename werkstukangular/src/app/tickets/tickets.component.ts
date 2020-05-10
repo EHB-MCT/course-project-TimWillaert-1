@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { WindowsService } from '../windows.service';
-import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tickets',
@@ -20,13 +20,13 @@ export class TicketsComponent implements OnInit {
   isDiscounted: boolean = false;
   canContinue: boolean = false;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService, private http: HttpClient) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
   }
 
   ngOnInit(): void {
-    this.http.get('https://backend-timw.herokuapp.com/api/tickets')
+    this.api.getTickets()
     .subscribe((data: any = {}) => {
         for(const ticket of data.data){
           this.data.push(ticket);
@@ -34,6 +34,7 @@ export class TicketsComponent implements OnInit {
         this.isLoading = false;
     },
     (error) => {
+      console.log(error);
       this.error = true;
     }
     );
