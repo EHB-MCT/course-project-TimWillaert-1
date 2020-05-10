@@ -1,21 +1,26 @@
-import { Component, OnInit, ElementRef, Renderer2, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { WindowsService } from '../windows.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-practical',
   templateUrl: './practical.component.html',
   styleUrls: ['./practical.component.css']
 })
-export class PracticalComponent implements OnInit, AfterViewInit {
+export class PracticalComponent implements OnInit, AfterViewInit, AfterViewChecked {
   zindex: number;
   practicalzindex: number;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observePracticalZ.subscribe(practicalzindex => this.practicalzindex = practicalzindex);
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
   ngAfterViewInit(){

@@ -23,8 +23,19 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "extractCss": true,
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "src/styleswindows.css",
+                "bundleName": "styleswindows",
+                "inject": false
+              },
+              {
+                "input": "src/stylesmac.css",
+                "bundleName": "stylesmac",
+                "inject": false
+              }
             ],
             "scripts": [
             ]

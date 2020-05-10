@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WindowsService {
+export class WindowsService{
+
+  private OSName = new BehaviorSubject<string>('');
+  observeOS = this.OSName.asObservable();
+
   private zindex = new BehaviorSubject<number>(1);
   observeZ = this.zindex.asObservable();
 
@@ -38,7 +42,18 @@ export class WindowsService {
   private ticketsActive = new BehaviorSubject<boolean>(false);
   observeTickets = this.ticketsActive.asObservable();
 
-  constructor() { }
+  constructor() {
+    if (navigator.appVersion.indexOf('Mac') != -1){
+      this.editOS('Mac');
+    } else{
+      this.editOS('Windows');
+    }
+    console.log(this.OSName.value);
+  }
+
+  editOS(value: string){
+    this.OSName.next(value);
+  }
 
   editZ(value: number){
     this.zindex.next(value);

@@ -1,13 +1,14 @@
-import { Component, OnInit, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, HostListener, AfterViewChecked } from '@angular/core';
 import { WindowsService } from '../windows.service';
 import { DataService } from '../data.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-partners',
   templateUrl: './partners.component.html',
   styleUrls: ['./partners.component.css']
 })
-export class PartnersComponent implements OnInit, AfterViewInit {
+export class PartnersComponent implements OnInit, AfterViewInit, AfterViewChecked {
   zindex: number;
   partnerszindex: number;
   gold: any = {};
@@ -16,7 +17,7 @@ export class PartnersComponent implements OnInit, AfterViewInit {
   isLoading: boolean = true;
   error: boolean = false;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
   }
@@ -33,6 +34,10 @@ export class PartnersComponent implements OnInit, AfterViewInit {
         console.log(error);
         this.error = true;
       });
+  }
+
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
   ngAfterViewInit(){

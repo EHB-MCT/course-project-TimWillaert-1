@@ -1,13 +1,14 @@
-import { Component, OnInit, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { WindowsService } from '../windows.service';
 import { DataService } from '../data.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-program',
   templateUrl: './program.component.html',
   styleUrls: ['./program.component.css']
 })
-export class ProgramComponent implements OnInit {
+export class ProgramComponent implements OnInit, AfterViewInit, AfterViewChecked {
   zindex: number;
   programzindex: number;
   isLoading: boolean = true;
@@ -27,7 +28,7 @@ export class ProgramComponent implements OnInit {
   speaker: any;
   session: any;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
   }
@@ -56,6 +57,10 @@ export class ProgramComponent implements OnInit {
       let slots = slotsArr.length;
       this.filledSlots += slots;
     }
+  }
+
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
   ngAfterViewInit(){

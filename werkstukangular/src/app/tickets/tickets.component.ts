@@ -1,13 +1,14 @@
-import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { WindowsService } from '../windows.service';
 import { DataService } from '../data.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
   styleUrls: ['./tickets.component.css']
 })
-export class TicketsComponent implements OnInit {
+export class TicketsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   zindex: number;
   ticketszindex: number;
   data: any[] = [];
@@ -20,7 +21,7 @@ export class TicketsComponent implements OnInit {
   isDiscounted: boolean = false;
   canContinue: boolean = false;
 
-  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService) {
+  constructor(private eRef: ElementRef, private windows: WindowsService, private api: DataService, private cdRef: ChangeDetectorRef) {
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
   }
@@ -38,6 +39,10 @@ export class TicketsComponent implements OnInit {
       this.error = true;
     }
     );
+  }
+
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
   addPerson(){

@@ -1,12 +1,13 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { WindowsService } from './windows.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   title = 'Dots&Pix';
   isLoading = true;
   aboutActive: boolean;
@@ -16,7 +17,7 @@ export class AppComponent{
   ticketsActive: boolean;
   errors: any[] = [];
 
-  constructor(private windows: WindowsService){
+  constructor(private windows: WindowsService, @Inject(DOCUMENT) private document: Document){
     this.windows.observeAbout.subscribe(aboutActive => this.aboutActive = aboutActive);
     this.windows.observePractical.subscribe(practicalActive => this.practicalActive = practicalActive);
     this.windows.observePartners.subscribe(partnersActive => this.partnersActive = partnersActive);
@@ -24,11 +25,19 @@ export class AppComponent{
     this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
   }
 
+  ngOnInit(){
+    const headEl = this.document.getElementsByTagName('head')[0];
+    const linkEl = this.document.createElement('link');
+    linkEl.rel = 'stylesheet';
+    linkEl.href = 'styleswindows.css';
+    headEl.appendChild(linkEl);
+  }
+
   startErrors(){
     const interval = setInterval(() => {
       this.errors.push(1);
 
-      if (this.errors.length == 50) {
+      if (this.errors.length === 50) {
         clearInterval(interval);
       }
     }, 100);
