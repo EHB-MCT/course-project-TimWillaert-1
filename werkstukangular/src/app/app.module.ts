@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProgramComponent } from './program/program.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { ErrorComponent } from './error/error.component';
+import { DocumentationComponent } from './documentation/documentation.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorComponent } from './error/error.component';
     PartnersComponent,
     ProgramComponent,
     TicketsComponent,
-    ErrorComponent
+    ErrorComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,

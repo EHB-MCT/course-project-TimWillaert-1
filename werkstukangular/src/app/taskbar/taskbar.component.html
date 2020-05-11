@@ -11,10 +11,14 @@
       <li (click)="clickPartners()"><img src="assets/img/partners.png"><span>P</span>artners</li>
       <hr>
       <li class="switch" (click)="switchOS('Mac')"><p>Switch to Mac</p></li>
+      <hr>
+      <a [routerLink]="['/documentation']"><li class="documentation"><p>Documentation</p></li></a>
     </ul>
   </div>
   <div class="startlist" *ngIf="OSName == 'Mac'">
     <ul>
+      <a [routerLink]="['/documentation']"><li class="documentation"><p>Documentation</p></li></a>
+      <hr>
       <li class="switch" (click)="switchOS('Windows')"><p>Switch to Windows</p></li>
       <hr>
       <li (click)="clickTickets()"><img src="assets/img/ticketsmac.png"><span>G</span>et Tickets</li>

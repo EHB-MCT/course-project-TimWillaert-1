@@ -1,0 +1,39 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.documentation{
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 99999999999999999999999999999999999999999999;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.container{
+  width: 70%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+h2{
+  color: gray;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.resources{
+  margin-top: 30px;
+}
+
+.resources ul{
+  margin-left: 30px;
+}
+
+h3{
+  font-size: 20px;
+  font-weight: bold;
+}
