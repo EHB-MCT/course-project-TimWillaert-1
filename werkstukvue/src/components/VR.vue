@@ -1,19 +1,34 @@
 <template>
-    <div>
-        <a-scene>
-            <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-            <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-            <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-            <a-sky color="#ECECEC"></a-sky>
-        </a-scene>
+    <div class="container">
+    <a-scene>
+    <a-entity environment="preset: forest;"></a-entity>
+
+      <!-- Player -->
+      <a-entity id="rig" movement-controls="controls: checkpoint" checkpoint-controls="mode: animate">
+        <a-entity camera
+                  position="0 1.6 0"
+                  look-controls="pointerLockEnabled: true">
+          <a-entity cursor
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01;"
+                    material="color: #CCC; shader: flat;"></a-entity>
+        </a-entity>
+      </a-entity>
+
+      <!-- Checkpoints -->
+      <a-entity position="1 0 1">
+        <a-cylinder checkpoint radius="1" height="0.1" position="0 0 -10" color="#39BB82"></a-cylinder>
+      </a-entity>
+
+    </a-scene>
     </div>
 </template>
 
 <script>
+
 export default {
-    
 }
+
 </script>
 
 <style scoped>
