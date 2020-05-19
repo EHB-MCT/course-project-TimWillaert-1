@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aframe-animation-component": "^5.1.2",
+    "aframe-animation-timeline-component": "^2.0.0",
     "core-js": "^3.6.4",
     "gsap": "^3.2.6",
     "vue": "^2.6.11"
