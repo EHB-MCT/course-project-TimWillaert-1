@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import VR from './components/VR.vue'
 
 export default {
