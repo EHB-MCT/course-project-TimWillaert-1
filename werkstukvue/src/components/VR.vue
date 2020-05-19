@@ -15,14 +15,21 @@
           <audio id="music" src="../assets/music.mp3"></audio>
         </a-assets>
 
+        <a-entity animation="property: position; to: 0 0 -100; dur: 30000;">
+          <a-entity id="car" obj-model="obj: #model; mtl: #material" scale="0.01 0.01 0.01">
+          </a-entity>
 
-        <a-entity obj-model="obj: #model; mtl: #material" scale="0.01 0.01 0.01">
+          <a-entity id="rig" position="0.32 -0.63 0.3">
+            <a-camera sound="src: #music; autoplay: true; positional: false; loop: true;">
+            </a-camera>
+            <a-entity id="leftHand" sphere-collider="objects: #car" super-hands hand-controls="hand: left; handModelStyle: highPoly; color: #ffcccc"></a-entity>
+            <a-entity id="rightHand" sphere-collider="objects: #car" super-hands hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
+          </a-entity>
         </a-entity>
+        
+        <a-entity light="type: ambient; color: #CCC; intensity: 0.1"></a-entity>
+        <a-entity light="type: directional; color: #FDB813; intensity: 0.1;" position="0 0 1"></a-entity>
 
-        <a-entity id="rig" position="0.32 -0.7 0.3">
-          <a-camera sound="src: #music; autoplay: true; positional: false;">
-          </a-camera>
-        </a-entity>
       <!--
         <a-assets>
 
@@ -69,7 +76,7 @@
 export default {
  data(){
    return{
-     startVR: false
+     startVR: false,
    }
  },
  methods: {
