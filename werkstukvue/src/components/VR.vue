@@ -66,24 +66,44 @@
           </a-entity>
 
           <a-entity v-if="mode == 'dj'">
-            <a-entity id="kicks" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 -0.3" rotation="10 180 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
-              <a-entity text-geometry="value: Kicks; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
-              <a-entity v-on:buttondown="clickBtn('kick')" id="button" ui-button="base: beveled-square, darkgreen; top: square, blue; pressed: yellow, offset" position="0 1.046 -0.110" rotation="-90 0 0"></a-entity>
+            <a-entity id="kicks" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0 1.5 -0.3" rotation="10 180 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Kicks; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('kick')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('kick2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('kick3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
-            <a-entity id="claps" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="-0.585 0 0.239" rotation="10 -90 0" material="shader: flat; color: #ffde08; opacity: 0.5; transparent: true;">
-              <a-entity text-geometry="value: Claps; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
-              <a-entity v-on:buttondown="clickBtn('clap')" id="button" ui-button="base: beveled-square, darkgreen; top: square, blue; pressed: yellow, offset" position="0 1.046 -0.110" rotation="-90 0 0"></a-entity>
+            <a-entity id="claps" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="-0.632 1.5 -0.070" rotation="10 -140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Claps; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('clap')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('clap2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('clap3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
-            <a-entity id="snares" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0.585 0 0.239" rotation="10 90 0" material="shader: flat; color: #45ff07; opacity: 0.5; transparent: true;">
-              <a-entity text-geometry="value: Snares; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
+            <a-entity id="bass" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0.632 1.5 -0.070" rotation="10 140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Bass; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('bass')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('bass2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('bass3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
-            <a-entity id="loops" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 0.8" rotation="-10 180 0" material="shader: flat; color: #0006b1; opacity: 0.5; transparent: true;">
-              <a-entity text-geometry="value: Loops; font: #optimerBoldFont; size: 0.2" rotation="0 0 0" position="-0.35 1.28 0.10" material="shader: flat; color: #fff;"></a-entity>
+            <a-entity id="loops" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0.922 1.5 0.554" rotation="10 90 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: 80s Loops; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop1'))" ui-toggle="value: 0;" position="0.189 -0.047 -0.097" rotation="90 180 0" scale="0.6 0.6 0.6"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop2'))" ui-toggle="value: 0;" position="-0.002 -0.047 -0.097" rotation="90 180 0" scale="0.6 0.6 0.6"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop3'))" ui-toggle="value: 0;" position="-0.2 -0.047 -0.097" rotation="90 180 0" scale="0.6 0.6 0.6"></a-entity>
             </a-entity>
+
+            <a-entity id="loops2" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="-0.922 1.5 0.554" rotation="-10 90 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Normal Loops; font: #optimerBoldFont; size: 0.05" rotation="0 0 0" material="shader: flat; color: #fff;" position="-0.274 0.062 0.052"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop4'))" ui-toggle="value: 0;" position="0.189 -0.047 0.097" rotation="90 0 0" scale="0.6 0.6 0.6"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop5'))" ui-toggle="value: 0;" position="-0.002 -0.047 0.097" rotation="90 0 0" scale="0.6 0.6 0.6"></a-entity>
+              <a-entity v-on:change="(toggleLoop('loop6'))" ui-toggle="value: 0;" position="-0.2 -0.047 0.097" rotation="90 0 0" scale="0.6 0.6 0.6"></a-entity>
             </a-entity>
+
+            <a-entity v-on:change="changeMusicVolume($event)" ui-slider="min: 0; max: 1; value: 1;" position="0 1.253 -0.159" rotation="50 0 0"></a-entity>
+            <a-entity v-on:change="changeEffectVolume($event)" ui-slider="min: 0; max: 1; value: 1;" position="0 1.12 -0.047" rotation="50 0 0"></a-entity>
+          </a-entity>
         </a-entity>
         
         <a-entity light="type: ambient; color: #CCC; intensity: 0.1"></a-entity>
@@ -100,7 +120,21 @@ export default {
    return{
      startVR: false,
      mode: '',
-     song: 'takeonme'
+     song: 'takeonme',
+     music: '',
+     effectVolume: 1.0,
+     loop1: new Audio(require('../assets/loop.wav')),
+     loop1Playing: false,
+     loop2: new Audio(require('../assets/loop2.wav')),
+     loop2Playing: false,
+     loop3: new Audio(require('../assets/loop3.wav')),
+     loop3Playing: false,
+     loop4: new Audio(require('../assets/loop4.wav')),
+     loop4Playing: false,
+     loop5: new Audio(require('../assets/loop5.wav')),
+     loop5Playing: false,
+     loop6: new Audio(require('../assets/loop6.wav')),
+     loop6Playing: false,
    }
  },
  methods: {
@@ -108,15 +142,45 @@ export default {
      this.mode = mode;
      this.startVR = true;
 
+     this.loop1.loop = true;
+     this.loop2.loop = true;
+     this.loop3.loop = true;
+     this.loop4.loop = true;
+     this.loop5.loop = true;
+     this.loop6.loop = true;
+
     setTimeout(()=>{
-      var audio = new Audio(require('../assets/'+this.song+'.mp3'));
-      audio.loop = true;
-      audio.play();
+      this.music = new Audio(require('../assets/'+this.song+'.mp3'));
+      this.music.loop = true;
+      this.music.play();
     },5000);
    },
    clickBtn(instrument){
      var audio = new Audio(require('../assets/'+instrument+'.wav'));
+     audio.volume = this.effectVolume;
      audio.play();
+   },
+   changeMusicVolume(event){
+     this.music.volume = parseFloat(event.detail.value);
+   },
+   changeEffectVolume(event){
+     this.effectVolume = parseFloat(event.detail.value);
+
+     this.loop1.volume = parseFloat(event.detail.value);
+     this.loop2.volume = parseFloat(event.detail.value);
+     this.loop3.volume = parseFloat(event.detail.value);
+     this.loop4.volume = parseFloat(event.detail.value);
+     this.loop5.volume = parseFloat(event.detail.value);
+     this.loop6.volume = parseFloat(event.detail.value);
+   },
+   toggleLoop(loop){
+     if(this[loop+"Playing"] == false){
+       this[loop].play();
+     } else{
+       this[loop].pause();
+       this[loop].currentTime = 0.0;
+     }
+     this[loop+"Playing"] = !this[loop+"Playing"];
    }
  }
 }
