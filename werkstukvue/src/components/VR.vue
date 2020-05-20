@@ -4,7 +4,20 @@
       <div class="card" v-if="!startVR">
         <select name="song" id="song" v-model="song">
           <option value="takeonme">Take On Me</option>
-          <option value="playingwiththeboys">Playing with the boys</option>
+          <option value="sweetchildomine">Sweet Child O' Mine</option>
+          <option value="thewholeofthemoon">The Whole Of The Moon</option>
+          <option value="takemybreathaway">Take My Breath Away</option>
+          <option value="comeoneileen">Come On Eileen</option>
+          <option value="dontstopbelieving">Don't Stop Believin'</option>
+          <option value="dancinginthedark">Dancing In The Dark</option>
+          <option value="taintedlove">Tainted Love</option>
+          <option value="dontyou">Don't You (Forget About Me)</option>
+          <option value="eyeofthetiger">Eye Of The Tiger</option>
+          <option value="heavenisaplaceonearth">Heaven Is A Place On Earth</option>
+          <option value="dontyouwantme">Don't You Want Me</option>
+          <option value="everybodywantstoruletheworld">Everybody Wants To Rule The World</option>
+          <option value="playingwiththeboys">Playing With The Boys</option>
+          <option value="walklikeanegyptian">Walk Like An Egyptian</option>
         </select>
         <button v-on:click="openVR('driver')">Driver mode</button>
         <button v-on:click="openVR('dj')">Diskjockey mode</button>
@@ -35,7 +48,7 @@
         <a-entity position="0 0 1.314" animation="property: position; to: 0 0 -0.708; loop: true; easing: linear; dur: 500;">
           <a-entity v-if="mode == 'driver'" id="car" obj-model="obj: #model; mtl: #material" scale="0.01 0.01 0.01">
           </a-entity>
-          <a-entity v-if="mode == 'dj'" id="platform" obj-model="obj: #djmodel; mtl: #djmaterial" scale="0.009 0.009 0.009" position="0.440 0 -1.453">
+          <a-entity v-if="mode == 'dj'" id="platform" obj-model="obj: #djmodel; mtl: #djmaterial" scale="0.007 0.007 0.007" position="0.440 0 -1">
           </a-entity>
 
           <a-entity v-if="mode == 'driver'" id="rig" position="0.32 -0.63 0.3">
@@ -52,16 +65,25 @@
             <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
           </a-entity>
 
-          <a-entity id="kicks" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 -0.5" rotation="10 180 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
-            <a-entity text-geometry="value: Kicks; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.25 -0.12" material="shader: flat; color: #0006b1;"></a-entity>
-          </a-entity>
+          <a-entity v-if="mode == 'dj'">
+            <a-entity id="kicks" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 -0.3" rotation="10 180 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Kicks; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('kick')" id="button" ui-button="base: beveled-square, darkgreen; top: square, blue; pressed: yellow, offset" position="0 1.046 -0.110" rotation="-90 0 0"></a-entity>
+            </a-entity>
 
-          <a-entity id="snares" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 0.9" rotation="-10 180 0" material="shader: flat; color: #0006b1; opacity: 0.5; transparent: true;">
+            <a-entity id="claps" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="-0.585 0 0.239" rotation="10 -90 0" material="shader: flat; color: #ffde08; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Claps; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('clap')" id="button" ui-button="base: beveled-square, darkgreen; top: square, blue; pressed: yellow, offset" position="0 1.046 -0.110" rotation="-90 0 0"></a-entity>
+            </a-entity>
 
-          </a-entity>
+            <a-entity id="snares" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0.585 0 0.239" rotation="10 90 0" material="shader: flat; color: #45ff07; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Snares; font: #optimerBoldFont; size: 0.2" rotation="0 180 0" position="0.35 1.28 -0.10" material="shader: flat; color: #fff;"></a-entity>
+            </a-entity>
 
-          <a-entity v-on:buttondown="clickBtn('kick')" id="button" ui-button="base: beveled-square, darkgreen; top: square, blue; pressed: yellow, offset" position="-0.188 1 0.446"></a-entity>
-          <a-entity v-on:buttondown="clickBtn('clap')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" position="-0.188 1 0.132"></a-entity>
+            <a-entity id="loops" geometry="primitive: box; width: 1; height: 3; depth: 0.2;" position="0 0 0.8" rotation="-10 180 0" material="shader: flat; color: #0006b1; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Loops; font: #optimerBoldFont; size: 0.2" rotation="0 0 0" position="-0.35 1.28 0.10" material="shader: flat; color: #fff;"></a-entity>
+            </a-entity>
+            </a-entity>
         </a-entity>
         
         <a-entity light="type: ambient; color: #CCC; intensity: 0.1"></a-entity>
