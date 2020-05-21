@@ -22,13 +22,14 @@
           <option value="strangerthings">Stranger Things C418 Remix</option>
           <option value="astronomia">Astronomia (Coffin Dance) 80s Remix</option>
         </select>
+        <input type="checkbox" name="visualizerEnabled" id="visualizerEnabled" v-model="visualizerEnabled"><label for="visualizerEnabled">Enable audio visualizer (performance heavy)</label>
         <button v-on:click="openVR('driver')">Driver mode</button>
         <button v-on:click="openVR('dj')">Diskjockey mode</button>
       </div>
 
       <a-scene v-if="startVR">
 
-        <a-entity environment="preset: starry;"></a-entity>
+        <a-entity environment="preset: starry; groundColor: #000;"></a-entity>
 
         <a-assets>
           <a-asset-item id="model" src="model.obj"></a-asset-item>
@@ -41,17 +42,33 @@
           <a-mixin id="beveled-square" geometry="primitive: cone; radiusTop: 0.15; radiusBottom: 0.19; height: 0.02; segmentsRadial: 4; segmentsHeight: 1" rotation="0 45 0"></a-mixin>
           <a-mixin id="square" geometry="primitive: box; width: 0.18; height: 0.025; depth: 0.18;" position="0 0.02 0"></a-mixin>
           <a-mixin id="blue" material="color: #1E2768;"></a-mixin>
-          <a-mixin id="darkgreen" material="color: #22FF90;"></a-mixin>
+          <a-mixin id="darkgreen" material="color: #4dffff;"></a-mixin>
           <a-mixin id="yellow" material="color: #FFF88E;"></a-mixin>
           <a-mixin id="offset" position="0 0.01 0"></a-mixin>
 
           <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+
+          <a-mixin id="bar"
+          geometry="primitive: box;"
+          material="shader: standard; color: #9400D3; emissive: #fff; emissiveIntensity: 0.1;"
+          rotation="90 0 0"></a-mixin>
+
+          <audio id="song" ref="song" crossorigin loop src="../assets/thewholeofthemoon.mp3"></audio>
         </a-assets>
 
         <a-entity position="0 0 1.314" animation="property: position; to: 0 0 -0.708; loop: true; easing: linear; dur: 500;">
           <a-entity v-if="mode == 'driver'" id="car" obj-model="obj: #model; mtl: #material" scale="0.01 0.01 0.01">
           </a-entity>
           <a-entity v-if="mode == 'dj'" id="platform" obj-model="obj: #djmodel; mtl: #djmaterial" scale="0.01 0.01 0.01" position="0.440 0 -1">
+          </a-entity>
+
+          <a-entity v-if="visualizerEnabled"
+            audio-visualizer="src: #song; smoothingTimeConstant: 0.8"
+            audio-visualizer-spectrum-scale="max: 1000; multiplier: 0.03"
+            entity-generator="mixin: bar; num: 50"
+            layout="type: circle; radius: 10; angle: 9;"
+            rotation="90 0 0"
+            position="0 0 0">
           </a-entity>
 
           <a-entity v-if="mode == 'driver'" id="rig" position="0.32 -0.63 0.3">
@@ -130,7 +147,7 @@
           </a-entity>
         </a-entity>
         
-        <a-entity light="type: ambient; color: #CCC; intensity: 0.1"></a-entity>
+        <a-entity light="type: ambient; color: #CCC; intensity: 0.2"></a-entity>
         <a-entity light="type: directional; color: #FDB813; intensity: 0.1;" position="0 0 1"></a-entity>
 
       </a-scene>
@@ -146,6 +163,7 @@ export default {
      mode: '',
      song: 'takeonme',
      music: '',
+     visualizerEnabled: false,
      effectVolume: 1.0,
      loop1: new Audio(require('../assets/loop.wav')),
      loop1Playing: false,
@@ -174,9 +192,8 @@ export default {
      this.loop6.loop = true;
 
     setTimeout(()=>{
-      this.music = new Audio(require('../assets/'+this.song+'.mp3'));
-      this.music.loop = true;
-      this.music.play();
+      this.$refs.song.setAttribute('src', this.song + ".mp3");
+      this.$refs.song.play();
     },5000);
    },
    clickBtn(instrument){
@@ -185,7 +202,7 @@ export default {
      audio.play();
    },
    changeMusicVolume(event){
-     this.music.volume = parseFloat(event.detail.value);
+     this.$refs.song.volume = parseFloat(event.detail.value);
    },
    changeEffectVolume(event){
      this.effectVolume = parseFloat(event.detail.value);
