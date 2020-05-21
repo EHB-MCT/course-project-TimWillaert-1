@@ -18,6 +18,9 @@
           <option value="everybodywantstoruletheworld">Everybody Wants To Rule The World</option>
           <option value="playingwiththeboys">Playing With The Boys</option>
           <option value="walklikeanegyptian">Walk Like An Egyptian</option>
+          <option value="starwars">Star Wars (Epic Main Theme)</option>
+          <option value="strangerthings">Stranger Things C418 Remix</option>
+          <option value="astronomia">Astronomia (Coffin Dance) 80s Remix</option>
         </select>
         <button v-on:click="openVR('driver')">Driver mode</button>
         <button v-on:click="openVR('dj')">Diskjockey mode</button>
@@ -48,7 +51,7 @@
         <a-entity position="0 0 1.314" animation="property: position; to: 0 0 -0.708; loop: true; easing: linear; dur: 500;">
           <a-entity v-if="mode == 'driver'" id="car" obj-model="obj: #model; mtl: #material" scale="0.01 0.01 0.01">
           </a-entity>
-          <a-entity v-if="mode == 'dj'" id="platform" obj-model="obj: #djmodel; mtl: #djmaterial" scale="0.007 0.007 0.007" position="0.440 0 -1">
+          <a-entity v-if="mode == 'dj'" id="platform" obj-model="obj: #djmodel; mtl: #djmaterial" scale="0.01 0.01 0.01" position="0.440 0 -1">
           </a-entity>
 
           <a-entity v-if="mode == 'driver'" id="rig" position="0.32 -0.63 0.3">
@@ -73,6 +76,13 @@
               <a-entity v-on:buttondown="clickBtn('kick3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
+            <a-entity id="hihats" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0 1.85 -0.3" rotation="-10 180 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: HiHats; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('hihat')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('hihat2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('hihat3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+            </a-entity>
+
             <a-entity id="claps" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="-0.632 1.5 -0.070" rotation="10 -140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
               <a-entity text-geometry="value: Claps; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
               <a-entity v-on:buttondown="clickBtn('clap')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
@@ -80,11 +90,25 @@
               <a-entity v-on:buttondown="clickBtn('clap3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
+            <a-entity id="snares" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="-0.632 1.85 -0.070" rotation="-10 -140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Snares; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('snare')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('snare2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('snare3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+            </a-entity>
+
             <a-entity id="bass" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0.632 1.5 -0.070" rotation="10 140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
               <a-entity text-geometry="value: Bass; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
               <a-entity v-on:buttondown="clickBtn('bass')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
               <a-entity v-on:buttondown="clickBtn('bass2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
               <a-entity v-on:buttondown="clickBtn('bass3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+            </a-entity>
+
+            <a-entity id="voices" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0.632 1.85 -0.070" rotation="-10 140 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
+              <a-entity text-geometry="value: Voices; font: #optimerBoldFont; size: 0.05" rotation="0 180 0" material="shader: flat; color: #fff;" position="0.274 0.062 -0.052"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('voice')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('voice2')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="0 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity v-on:buttondown="clickBtn('voice3')" id="button" ui-button="base: beveled-square, darkgreen; top: square, yellow; pressed: blue, offset" rotation="-90 0 0" position="-0.2 -0.05 -0.12" scale="0.5 0.5 0.5"></a-entity>
             </a-entity>
 
             <a-entity id="loops" geometry="primitive: box; width: 0.6; height: 0.3; depth: 0.2;" position="0.922 1.5 0.554" rotation="10 90 0" material="shader: flat; color: #ff1493; opacity: 0.5; transparent: true;">
@@ -134,7 +158,7 @@ export default {
      loop5: new Audio(require('../assets/loop5.wav')),
      loop5Playing: false,
      loop6: new Audio(require('../assets/loop6.wav')),
-     loop6Playing: false,
+     loop6Playing: false
    }
  },
  methods: {
@@ -196,13 +220,8 @@ export default {
   min-height: 100vh;
 }
 
-.card{
-  border-radius: 20px;
-}
-
 button{
   padding: 10px;
-  margin: 10px;
 }
 
 </style>
