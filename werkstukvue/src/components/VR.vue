@@ -2,29 +2,61 @@
     <div class="container">
     
       <div class="card" v-if="!startVR">
-        <select name="song" id="song" v-model="song">
-          <option value="takeonme">Take On Me</option>
-          <option value="sweetchildomine">Sweet Child O' Mine</option>
-          <option value="thewholeofthemoon">The Whole Of The Moon</option>
-          <option value="takemybreathaway">Take My Breath Away</option>
-          <option value="comeoneileen">Come On Eileen</option>
-          <option value="dontstopbelieving">Don't Stop Believin'</option>
-          <option value="dancinginthedark">Dancing In The Dark</option>
-          <option value="taintedlove">Tainted Love</option>
-          <option value="dontyou">Don't You (Forget About Me)</option>
-          <option value="eyeofthetiger">Eye Of The Tiger</option>
-          <option value="heavenisaplaceonearth">Heaven Is A Place On Earth</option>
-          <option value="dontyouwantme">Don't You Want Me</option>
-          <option value="everybodywantstoruletheworld">Everybody Wants To Rule The World</option>
-          <option value="playingwiththeboys">Playing With The Boys</option>
-          <option value="walklikeanegyptian">Walk Like An Egyptian</option>
-          <option value="starwars">Star Wars (Epic Main Theme)</option>
-          <option value="strangerthings">Stranger Things C418 Remix</option>
-          <option value="astronomia">Astronomia (Coffin Dance) 80s Remix</option>
-        </select>
-        <input type="checkbox" name="visualizerEnabled" id="visualizerEnabled" v-model="visualizerEnabled"><label for="visualizerEnabled">Enable audio visualizer (performance heavy)</label>
-        <button v-on:click="openVR('driver')">Driver mode</button>
-        <button v-on:click="openVR('dj')">Diskjockey mode</button>
+
+        <div v-if="!menuOpen" id="screen1" ref="screen1">
+          <p>ENABLE MENU MUSIC?</p>
+          <div>
+            <p class="hover" value="YES" v-on:click="enableMenuMusic(), openMenu()">YES</p>
+            <p>/</p>
+            <p class="hover" value="NO" v-on:click="openMenu()">NO</p>
+          </div>
+        </div>
+
+        <div v-if="menuOpen" id="screen2">
+          <video src="../assets/background.mp4" autoplay muted loop></video>
+
+          <div class="wrapper" ref="wrapper">
+            <div class="selectMode">
+              <img src="../assets/synthrider.png">
+              <div class="column">
+                <p class="hover" value="DRIVER MODE" v-on:click="selectMode('driver')">DRIVER MODE</p>
+                <p class="hover" value="DISKJOCKEY MODE" v-on:click="selectMode('dj')">DISKJOCKEY MODE</p>
+              </div>
+            </div>
+
+            <div class="selectSong">
+              <p class="hover" value="&lt; BACK" id="back" v-on:click="deselectMode()">&lt; BACK</p>
+              <p>CHOOSE YOUR SONG</p>
+              <div class="song">
+                <p class="hover" value="&lt;" v-on:click="previousSong()">&lt;</p>
+                <img v-bind:src="coverSrc" id="cover" ref="cover" value="0">
+                <p class="hover" value="&gt;" v-on:click="nextSong()">&gt;</p>
+              </div>
+              <p class="coverSong">{{coverSong}}</p>
+              <div class="start">
+                <p class="hover" value="START" v-on:click="openVR()">START</p>
+              </div>
+            </div>
+          </div>
+
+          <audio v-if="menuMusic" src="../assets/menu.mp3" autoplay loop></audio>
+        </div>
+
+        <div v-if="menuOpen" class="bottom">
+            <div class="links">
+              <img src="../assets/github.png">
+              <img src="../assets/linkedin.png">
+            </div>
+
+            <div class="checkbox">
+              <input type="checkbox" id="check" name="check" v-model="visualizerEnabled">
+              <label for="check">ENABLE AUDIO VISUALIZER (PERFORMANCE-HEAVY)</label>
+            </div>
+
+            <div class="name">
+              <p>PROJECT BY</p><img src="../assets/tim.png"><p>TIM WILLAERT</p>
+            </div>
+        </div>
       </div>
 
       <a-scene v-if="startVR">
@@ -53,7 +85,7 @@
           material="shader: standard; color: #9400D3; emissive: #fff; emissiveIntensity: 0.1;"
           rotation="90 0 0"></a-mixin>
 
-          <audio id="song" ref="song" crossorigin loop src="../assets/thewholeofthemoon.mp3"></audio>
+          <audio id="song" ref="song" crossorigin loop v-bind:src="song"></audio>
         </a-assets>
 
         <a-entity position="0 0 1.314" animation="property: position; to: 0 0 -0.708; loop: true; easing: linear; dur: 500;">
@@ -159,9 +191,33 @@
 export default {
  data(){
    return{
+     songDict: {
+       0: 'The Waterboys - The Whole Of The Moon',
+       1: 'a-ha - Take On Me',
+       2: 'Soft Cell - Tainted Love',
+       3: 'Journey - Don\'t Stop Believin\'',
+       4: 'Berlin - Take My Breath Away',
+       5: 'Belinda Carlisle - Heaven Is A Place On Earth',
+       6: 'Guns N\' Roses - Sweet Child O\' Mine',
+       7: 'Bruce Springsteen - Dancing In The Dark',
+       8: 'Simple Minds - Don\'t You (Forget About Me)',
+       9: 'Tears For Fears - Everybody Wants To Rule The World',
+       10: 'Kenny Loggins - Playing With The Boys',
+       11: 'Dexy\'s Midnight Runners - Come On Eileen',
+       12: 'The Human League - Don\'t You Want Me',
+       13: 'The Bangles - Walk Like An Egyptian',
+       14: 'Survivor - Eye Of The Tiger',
+       15: 'Samuel Kim - Star Wars (Epic Main Theme)',
+       16: 'C418 - Stranger Things Main Theme Remix',
+       17: 'Astronomia (Coffin Dance) 80s Remix'
+     },
+     menuMusic: false,
+     menuOpen: false,
+     coverSrc: '0.jpg',
+     coverSong: 'The Waterboys - The Whole Of The Moon',
      startVR: false,
      mode: '',
-     song: 'takeonme',
+     song: '0.mp3',
      music: '',
      visualizerEnabled: false,
      effectVolume: 1.0,
@@ -180,8 +236,48 @@ export default {
    }
  },
  methods: {
-   openVR(mode){
-     this.mode = mode;
+   selectMode(mode){
+    this.mode = mode;
+    this.$refs.wrapper.classList.add('slideLeft');
+    this.$refs.wrapper.classList.remove('slideRight');
+   },
+   deselectMode(){
+    this.$refs.wrapper.classList.add('slideRight');
+    this.$refs.wrapper.classList.remove('slideLeft');
+   },
+   nextSong(){
+     let value = parseInt(this.$refs.cover.getAttribute('value')) + 1;
+     let string = '';
+     if(value > 17){
+       string = '0.jpg';
+       this.song = '0.mp3';
+       value = 0;
+       this.coverSong = this.songDict[value];
+     } else{
+       string = value + '.jpg';
+       this.song = value + '.mp3';
+       this.coverSong = this.songDict[value];
+     }
+     this.$refs.cover.setAttribute('src', string);
+     this.$refs.cover.setAttribute('value', value);
+   },
+   previousSong(){
+    let value = parseInt(this.$refs.cover.getAttribute('value')) - 1; 
+     let string = '';
+     if(value < 0){
+       string = '17.jpg';
+       this.song = '17.mp3';
+       value = 17;
+       this.coverSong = this.songDict[value];
+     } else{
+       string = value + '.jpg';
+       this.song = value + '.mp3';
+       this.coverSong = this.songDict[value];
+     }
+     this.$refs.cover.setAttribute('src', string);
+     this.$refs.cover.setAttribute('value', value);
+   },
+   openVR(){
      this.startVR = true;
 
      this.loop1.loop = true;
@@ -192,7 +288,6 @@ export default {
      this.loop6.loop = true;
 
     setTimeout(()=>{
-      this.$refs.song.setAttribute('src', this.song + ".mp3");
       this.$refs.song.play();
     },5000);
    },
@@ -222,6 +317,15 @@ export default {
        this[loop].currentTime = 0.0;
      }
      this[loop+"Playing"] = !this[loop+"Playing"];
+   },
+   enableMenuMusic(){
+    this.menuMusic = true;
+   },
+   openMenu(){
+    this.$refs.screen1.classList.add('openMenu');
+     setTimeout(()=>{
+      this.menuOpen = true;
+    },1500);
    }
  }
 }
@@ -230,15 +334,286 @@ export default {
 
 <style scoped>
 
+body{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+::selection{
+  background: transparent;
+}
+
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('../assets/VCROSDMono.eot');
+    src: url('../assets/VCROSDMono.eot?#iefix') format('embedded-opentype'),
+        url('../assets/VCROSDMono.woff2') format('woff2'),
+        url('../assets/VCROSDMono.woff') format('woff'),
+        url('../assets/VCROSDMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes startApp{
+  0%{opacity: 0; display: none;}
+  20%{opacity: 1;}
+  40%{opacity: 0;}
+  60%{opacity: 1;}
+  100%{opacity: 1; display: block;}
+}
+
+@keyframes fadeOut{
+  0%{opacity: 1; display: block;}
+  100%{opacity: 0; display: none;}
+}
+
+#screen1{
+  animation: startApp 1.5s step-end;
+  animation-fill-mode: forwards;
+}
+
+#screen1.openMenu{
+  animation: fadeOut 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.hover{
+  position: relative;
+  z-index: 1;
+}
+
+.hover:hover{
+  cursor: pointer;
+}
+
+.hover:hover::before{
+  content: attr(value);
+  color: #FF2929;
+  position: absolute;
+  z-index: -1;
+  left: -2px;
+}
+
+.hover:hover::after{
+  content: attr(value);
+  color: #4EE2FF;
+  position: absolute;
+  z-index: -1;
+  right: -2px;
+}
+
 .container{
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: 'VCR OSD Mono';
 }
 
-button{
-  padding: 10px;
+p{
+  font-size: 4.5vh;
+}
+
+#screen1 div{
+  display: flex;
+  justify-content: center;
+}
+
+#screen1 p{
+  margin: 10px 10px;
+}
+
+.selectMode img{
+  height: 50vh;
+  align-self: center;
+}
+
+@keyframes openMenu{
+  0%{opacity: 0; width: 40%;}
+  20%{opacity: 1;}
+  30%{width: 40%;}
+  100%{width: 75%;}
+}
+
+#screen2{
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation: openMenu 4.5s ease;
+  animation-fill-mode: forwards;
+  text-align: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
+#screen2::after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url('../assets/overlay.png');
+  opacity: 0.4;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+}
+
+#screen2 video{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: fill;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  animation: startApp 1.5s step-end 2;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  padding-bottom: 6vh;
+}
+
+.selectMode{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.column p{
+  margin: 1vh 0;
+}
+
+@keyframes fadeIn{
+  0%{opacity: 0}
+  100%{opacity: 0.7}
+}
+
+.bottom{
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  left: 5%;
+  height: 10%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2vh;
+  animation: fadeIn 3s ease forwards;
+  animation-delay: 4s;
+}
+
+.bottom input, .bottom label{
+  margin: 0 5px;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+}
+
+.name, .links{
+  display: flex;
+  align-items: center;
+}
+
+.name img{
+  height: 3vh;
+  border-radius: 50px;
+  margin: 0 10px;
+}
+
+.name p{
+  font-size: 2vh;
+}
+
+.links img{
+  height: 2.5vh;
+  margin: 0 7px;
+}
+
+.links img:hover{
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+@keyframes slideLeft{
+  0%{}
+  100%{transform: translateX(-50%)}
+}
+
+@keyframes slideRight{
+  0%{transform: translateX(-50%)}
+  100%{transform: translateX(0%)}
+}
+
+.selectMode, .selectSong{
+  display: inline-block;
+  width: 50%;
+  position: relative;
+}
+
+.wrapper{
+  width: 200%;
+  display: flex;
+}
+
+.wrapper.slideLeft{
+  animation: slideLeft .5s linear;
+  animation-fill-mode: forwards;
+}
+
+.wrapper.slideRight{
+  animation: slideRight .5s linear;
+  animation-fill-mode: forwards;
+}
+
+#back{
+  position: absolute;
+  left: 5%;
+  top: 10%;
+}
+
+.selectSong{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7vh 0;
+}
+
+.start p{
+  display: inline-block;
+}
+
+.song{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cover{
+  height: 25vh;
+  width: 25vh;
+  object-fit: cover;
+  margin: 0 5vw;
+}
+
+.coverSong{
+  font-size: 3vh;
 }
 
 </style>
