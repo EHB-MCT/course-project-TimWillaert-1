@@ -12,7 +12,7 @@
           </div>
         </div>
 
-        <div v-if="menuOpen" id="screen2">
+        <div v-if="menuOpen" id="screen2" ref="screen2">
           <video src="../assets/background.mp4" autoplay muted loop></video>
 
           <div class="wrapper" ref="wrapper">
@@ -44,8 +44,8 @@
 
         <div v-if="menuOpen" class="bottom">
             <div class="links">
-              <img src="../assets/github.png">
-              <img src="../assets/linkedin.png">
+              <a href="https://github.com/TimWillaert" target="_blank"><img src="../assets/github.png"></a>
+              <a href="https://www.linkedin.com/in/timwillaert/" target="_blank"><img src="../assets/linkedin.png"></a>
             </div>
 
             <div class="checkbox">
@@ -355,21 +355,13 @@ body{
     font-style: normal;
 }
 
-@keyframes startApp{
-  0%{opacity: 0; display: none;}
-  20%{opacity: 1;}
-  40%{opacity: 0;}
-  60%{opacity: 1;}
-  100%{opacity: 1; display: block;}
-}
-
 @keyframes fadeOut{
   0%{opacity: 1; display: block;}
   100%{opacity: 0; display: none;}
 }
 
 #screen1{
-  animation: startApp 1.5s step-end;
+  animation: showMenu 1.5s step-end;
   animation-fill-mode: forwards;
 }
 
@@ -426,16 +418,23 @@ p{
   margin: 10px 10px;
 }
 
+@keyframes imgAnim{
+  0%{transform: translateY(50%)}
+  100%{transform: translateY(0%)}
+}
+
 .selectMode img{
   height: 50vh;
   align-self: center;
+  animation: imgAnim 2s ease forwards;
 }
 
 @keyframes openMenu{
-  0%{opacity: 0; width: 40%;}
+  0%{opacity: 0; width: 40%; filter: grayscale(100%)}
   20%{opacity: 1;}
   30%{width: 40%;}
-  100%{width: 75%;}
+  60%{filter: grayscale(100%)}
+  100%{width: 75%; filter: grayscale(0%)}
 }
 
 #screen2{
@@ -451,11 +450,17 @@ p{
   overflow: hidden;
 }
 
+@keyframes VHS{
+  0%{background-position: top;}
+  100%{background-position: bottom;}
+}
+
 #screen2::after{
   content: '';
   width: 100%;
   height: 100%;
   background: url('../assets/overlay.png');
+  animation: VHS 20s infinite linear;
   opacity: 0.4;
   pointer-events: none;
   position: absolute;
@@ -475,14 +480,24 @@ p{
   z-index: -1;
 }
 
+@keyframes showMenu{
+  0%{opacity: 0; display: none;}
+  20%{opacity: 1;}
+  40%{opacity: 0;}
+  60%{opacity: 1;}
+  80%{opacity: 0;}
+  100%{opacity: 1; display: block;}
+}
+
 .column{
+  opacity: 0;
   display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
-  animation: startApp 1.5s step-end 2;
+  animation: showMenu 1.5s step-start;
   animation-fill-mode: forwards;
-  animation-delay: 1s;
+  animation-delay: 4s;
   padding-bottom: 6vh;
 }
 
