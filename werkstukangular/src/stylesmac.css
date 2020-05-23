@@ -989,9 +989,13 @@
   align-items: center;
   margin-left: 10px;
   background-color: #DDDDDD;
-  padding: 2px 5px;
+  padding: 0px 5px;
   border-style: none;
   height: 100%;
+}
+
+.start:hover{
+  cursor: pointer;
 }
 
 .start:focus{

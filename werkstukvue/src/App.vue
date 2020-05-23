@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <VR/>
+    <CallingCard/>
+    <!-- <VR/> -->
   </div>
 </template>
 
 <script>
-import VR from './components/VR.vue'
+import CallingCard from './components/CallingCard.vue'
 
 export default {
   name: 'App',
   components: {
-    VR
+    CallingCard
   }
 }
 </script>
