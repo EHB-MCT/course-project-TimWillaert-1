@@ -163,7 +163,8 @@ export default {
       this.$refs.song.play();
     },5000);
   },
-  clickBtn(instrument){
+  methods: {
+clickBtn(instrument){
      var audio = new Audio(require('../assets/'+instrument+'.wav'));
      audio.volume = this.effectVolume;
      audio.play();
@@ -190,6 +191,7 @@ export default {
      }
      this[loop+"Playing"] = !this[loop+"Playing"];
    }
+  }
 }
 
 </script>
