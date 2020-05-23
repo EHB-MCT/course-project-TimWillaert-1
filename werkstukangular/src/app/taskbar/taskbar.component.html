@@ -30,20 +30,20 @@
   </div>
 </div>
 <div class="taskbar">
-  <button class="start" (click)="startClick()" [ngClass]="clicked ? 'clicked' : ''">
+  <div class="start" (click)="startClick()" [ngClass]="clicked ? 'clicked' : ''">
     <img src="assets/img/taskbarlogo.png" *ngIf='OSName == "Windows"'>
     <img src="assets/img/taskbarlogomac.png" *ngIf='OSName == "Mac"'>
     <ng-container *ngIf='OSName == "Windows"'>
       Start
     </ng-container>
-  </button>
+  </div>
   <span class="line" *ngIf='OSName == "Windows"'></span>
   <div class="windows" *ngIf="OSName == 'Windows'">
-    <button *ngIf="programActive" (click)="clickProgram()" [ngClass]="programzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/program.png">Program</button>
-    <button *ngIf="practicalActive" (click)="clickPractical()" [ngClass]="practicalzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/practical.png">Practical</button>
-    <button *ngIf="aboutActive" (click)="clickAbout()" [ngClass]="aboutzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/about.png">About</button>
-    <button *ngIf="partnersActive" (click)="clickPartners()" [ngClass]="partnerszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/partners.png">Partners</button>
-    <button *ngIf="ticketsActive" (click)="clickTickets()" [ngClass]="ticketszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/tickets.png">Tickets</button>
+    <div *ngIf="programActive" (click)="clickProgram()" [ngClass]="programzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/program.png">Program</div>
+    <div *ngIf="practicalActive" (click)="clickPractical()" [ngClass]="practicalzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/practical.png">Practical</div>
+    <div *ngIf="aboutActive" (click)="clickAbout()" [ngClass]="aboutzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/about.png">About</div>
+    <div *ngIf="partnersActive" (click)="clickPartners()" [ngClass]="partnerszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/partners.png">Partners</div>
+    <div *ngIf="ticketsActive" (click)="clickTickets()" [ngClass]="ticketszindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/tickets.png">Tickets</div>
   </div>
   <div class="windows" *ngIf="OSName == 'Mac'">
     <button *ngIf="programActive" (click)="clickProgram()" [ngClass]="programzindex == zindex+2 ? 'clicked' : ''"><img src="assets/img/programmac.png">Program</button>

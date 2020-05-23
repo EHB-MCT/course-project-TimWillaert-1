@@ -968,6 +968,12 @@
   margin-left: 10px;
   background-color: #C0C0BF;
   padding: 2px 5px;
+  border-style: outset;
+  font-size: 14px;
+}
+
+.start:hover{
+  cursor: pointer;
 }
 
 .start:focus{
@@ -1069,15 +1075,25 @@
   display: flex;
 }
 
-.windows button{
+.windows div{
   padding: 6px 15px;
   margin-right: 5px;
   background-color: #C0C0BF;
   display: flex;
   align-items: center;
+  font-size: 13px;
+  border-style: outset;
 }
 
-.windows button:focus{
+.windows div:hover{
+  cursor: pointer;
+}
+
+.windows div.clicked{
+  border-style: inset;
+}
+
+.windows div:focus{
   outline: 0;
 }
 
@@ -1251,7 +1267,7 @@
 #tickets .addperson{
   background-color: #C0C0BF;
   border-style: outset;
-  margin: 20px 0 40px 0;
+  margin: 20px;
   padding: 10px 0;
   width: calc(100% - 40px);
   font-size: 12px;
@@ -1309,6 +1325,7 @@
 #alignright{
   text-align: right;
   padding: 0;
+  padding-top: 20px;
 }
 
 .startlist a{
