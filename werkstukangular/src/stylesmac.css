@@ -288,6 +288,12 @@
   top: 45%;
 }
 
+#desktopicons .coachingsessions{
+  position: absolute;
+  left: 30%;
+  top: 60%;
+}
+
 /* ERROR COMPONENT */
 
 #error .error{
@@ -1011,7 +1017,7 @@
   position: absolute;
   left: 16%;
   top: 30px;
-  height: 354px;
+  height: 404px;
   width: 250px;
   background-color: #C0C0BF;
   border: 1px solid black;
@@ -1131,12 +1137,43 @@ button{
   top: 3%;
 }
 
+#coachingsessions{
+  left: 10%;
+  top: 5%;
+}
+
+#coachingsessions .extrapadding{
+  padding: 10px 20px 20px 20px;
+}
+
+#coachingsessions .extrapadding p, #ooachingsessions select{
+  display: inline-block;
+}
+
+#coachingsessions .extrapadding p{
+  padding-left: 0;
+}
+
+#coachingsessions .container{
+  text-align: left;
+}
+
+#coachingsessions input{
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+#coachingsessions button{
+  display: block;
+  margin-top: 40px;
+}
+
 #tickets .container{
   overflow-y: auto;
   max-height: calc(100vh - 150px);
 }
 
-#tickets .close, #tickets .min{
+#tickets .close, #tickets .min, #coachingsessions .close, #coachingsessions .min{
   height: 20px;
   width: 20px;
   background-color: #C0C0BF;
@@ -1148,7 +1185,7 @@ button{
   justify-content: center;
 }
 
-#tickets .min:hover{
+#tickets .min:hover, #coachingsessions .min:hover{
   cursor: pointer;
 }
 
@@ -1158,7 +1195,7 @@ button{
   padding: 20px;
 }
 
-#tickets .loading{
+#tickets .loading, #coachingsessions .loading{
   width: 300px;
   height: 15px;
   border: 1px solid black;
@@ -1168,7 +1205,7 @@ button{
   background-color: #CECEFF;
 }
 
-#tickets .loadcontainer{
+#tickets .loadcontainer, #coachingsessions .loadcontainer{
   width: 100%;
   height: 100%;
   position: absolute;
@@ -1177,7 +1214,7 @@ button{
   background-color: #424242;
 }
 
-#tickets .loaditem{
+#tickets .loaditem, #coachingsessions .loaditem{
   background-color: black;
   height: 80%;
   width: 4%;
@@ -1195,7 +1232,7 @@ button{
   }
 }
 
-#tickets .error{
+#tickets .error, #coachingsessions .error{
   padding: 20px;
   padding-top: 0;
   animation: typing 3.5s steps(40, end);
@@ -1251,14 +1288,14 @@ button{
   font-size: 10px;
 }
 
-#tickets button{
+#tickets button, #coachingsessions button{
   background-color: #C0C0BF;
   border: 1px solid black;
   padding: 10px;
   font-size: 12px;
 }
 
-#tickets button:hover{
+#tickets button:hover, #coachingsessions button:hover{
   cursor: pointer;
   background-color: #CCCCCC;
 }
@@ -1273,7 +1310,7 @@ button{
 #tickets .addperson{
   background-color: #C0C0BF;
   border: 1px solid black;
-  margin: 20px 0 40px 0;
+  margin: 20px;
   padding: 10px 0;
   width: calc(100% - 40px);
   font-size: 12px;
@@ -1303,7 +1340,7 @@ button{
   align-items: center;
 }
 
-#tickets input, select{
+#tickets input, select, #coachingsessions input{
   background-color: lightgray;
   padding: 10px;
   font-size: 12px;

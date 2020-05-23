@@ -271,6 +271,12 @@
   top: 45%;
 }
 
+#desktopicons .coachingsessions{
+  position: absolute;
+  left: 55%;
+  top: 60%;
+}
+
 /* ERROR COMPONENT */
 
 #error .error{
@@ -990,8 +996,8 @@
   position: absolute;
   left: 15%;
   bottom: 60px;
-  height: 354px;
-  width: 250px;
+  height: 404px;
+  width: 270px;
   background-color: #C0C0BF;
   border-style: outset;
   z-index: 9999999999999999999999999999999999999999999999999999999;
@@ -1120,11 +1126,42 @@
   cursor: pointer;
 }
 
-/* TICKETS COMPONENT */
+/* TICKETS AND COACHING SESSIONS COMPONENTS */
 
 #tickets{
   left: 15%;
   top: 3%;
+}
+
+#coachingsessions{
+  left: 10%;
+  top: 5%;
+}
+
+#coachingsessions .extrapadding{
+  padding: 10px 20px 20px 20px;
+}
+
+#coachingsessions .extrapadding p, #ooachingsessions select{
+  display: inline-block;
+}
+
+#coachingsessions .extrapadding p{
+  padding-left: 0;
+}
+
+#coachingsessions .container{
+  text-align: left;
+}
+
+#coachingsessions input{
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+#coachingsessions button{
+  display: block;
+  margin-top: 40px;
 }
 
 #tickets .container{
@@ -1132,7 +1169,7 @@
   max-height: calc(100vh - 150px);
 }
 
-#tickets .close, #tickets .min{
+#tickets .close, #tickets .min, #coachingsessions .close, #coachingsessions .min{
   height: 20px;
   width: 20px;
   background-color: #C0C0BF;
@@ -1144,7 +1181,7 @@
   justify-content: center;
 }
 
-#tickets .min:hover{
+#tickets .min:hover, #coachingsessions .min:hover{
   cursor: pointer;
 }
 
@@ -1154,7 +1191,7 @@
   padding: 20px;
 }
 
-#tickets .loading{
+#tickets .loading, #coachingsessions .loading{
   width: 300px;
   height: 30px;
   border: 1px solid black;
@@ -1163,7 +1200,7 @@
   margin: 20px;
 }
 
-#tickets .loadcontainer{
+#tickets .loadcontainer, #coachingsessions .loadcontainer{
   width: 100%;
   height: 100%;
   display: flex;
@@ -1173,7 +1210,7 @@
   animation: loading 3.5s infinite steps(15);
 }
 
-#tickets .loaditem{
+#tickets .loaditem, #coachingsessions .loaditem{
   background-color: black;
   height: 80%;
   width: 4%;
@@ -1190,7 +1227,7 @@
   }
 }
 
-#tickets .error{
+#tickets .error, #coachingsessions .error{
   padding: 20px;
   padding-top: 0;
   animation: typing 3.5s steps(40, end);
@@ -1246,14 +1283,14 @@
   font-size: 10px;
 }
 
-#tickets button{
+#tickets button, #coachingsessions button{
   background-color: #C0C0BF;
   border-style: outset;
   padding: 10px;
   font-size: 12px;
 }
 
-#tickets button:hover{
+#tickets button:hover, #coachingsessions button:hover{
   cursor: pointer;
 }
 
@@ -1293,7 +1330,7 @@
   align-items: center;
 }
 
-#tickets input, select{
+#tickets input, select, #coachingsessions input{
   background-color: lightgray;
   padding: 10px;
   font-size: 12px;

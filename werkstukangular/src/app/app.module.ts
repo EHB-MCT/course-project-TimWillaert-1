@@ -17,6 +17,7 @@ import { ProgramComponent } from './program/program.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { ErrorComponent } from './error/error.component';
 import { DocumentationComponent } from './documentation/documentation.component';
+import { CoachingsessionsComponent } from './coachingsessions/coachingsessions.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DocumentationComponent } from './documentation/documentation.component'
     ProgramComponent,
     TicketsComponent,
     ErrorComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    CoachingsessionsComponent
   ],
   imports: [
     BrowserModule,

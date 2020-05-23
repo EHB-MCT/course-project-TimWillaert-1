@@ -15,6 +15,7 @@ export class AppComponent{
   partnersActive: boolean;
   programActive: boolean;
   ticketsActive: boolean;
+  coachingSessionsActive: boolean;
   errors: any[] = [];
 
   OSName: string;
@@ -25,6 +26,7 @@ export class AppComponent{
     this.windows.observePartners.subscribe(partnersActive => this.partnersActive = partnersActive);
     this.windows.observeProgram.subscribe(programActive => this.programActive = programActive);
     this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
+    this.windows.observeCoachingSessions.subscribe(coachingSessionsActive => this.coachingSessionsActive = coachingSessionsActive);
 
     this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
     this.windows.observeOS.subscribe(OSName => this.updateOS(OSName));

@@ -14,6 +14,7 @@ export class TaskbarComponent implements OnInit {
   partnerszindex: number;
   programzindex: number;
   ticketszindex: number;
+  coachingsessionszindex: number;
 
   clicked = false;
 
@@ -22,6 +23,7 @@ export class TaskbarComponent implements OnInit {
   partnersActive: boolean;
   programActive: boolean;
   ticketsActive: boolean;
+  coachingSessionsActive: boolean;
 
   formattedTime: string = formatDate(new Date(), 'hh:mm a', 'en-US');
 
@@ -36,6 +38,7 @@ export class TaskbarComponent implements OnInit {
     this.windows.observePartners.subscribe(partnersActive => this.partnersActive = partnersActive);
     this.windows.observeProgram.subscribe(programActive => this.programActive = programActive);
     this.windows.observeTickets.subscribe(ticketsActive => this.ticketsActive = ticketsActive);
+    this.windows.observeCoachingSessions.subscribe(coachingSessionsActive => this.coachingSessionsActive = coachingSessionsActive);
 
     this.windows.observeZ.subscribe(zindex => this.zindex = zindex);
     this.windows.observeAboutZ.subscribe(aboutzindex => this.aboutzindex = aboutzindex);
@@ -43,6 +46,7 @@ export class TaskbarComponent implements OnInit {
     this.windows.observePartnersZ.subscribe(partnerszindex => this.partnerszindex = partnerszindex);
     this.windows.observeProgramZ.subscribe(programzindex => this.programzindex = programzindex);
     this.windows.observeTicketsZ.subscribe(ticketszindex => this.ticketszindex = ticketszindex);
+    this.windows.observeCoachingSessionsZ.subscribe(coachingsessionszindex => this.coachingsessionszindex = coachingsessionszindex);
 
     this.windows.observeOS.subscribe(OSName => this.OSName = OSName);
   }
@@ -88,6 +92,13 @@ export class TaskbarComponent implements OnInit {
     this.clicked = false;
     this.windows.editZ(this.zindex + 1);
     this.windows.editTicketsZ(this.zindex + 2);
+  }
+
+  clickCoachingSessions(){
+    this.windows.editCoachingSessions(true);
+    this.clicked = false;
+    this.windows.editZ(this.zindex + 1);
+    this.windows.editCoachingSessionsZ(this.zindex + 2);
   }
 
   @HostListener('document:click', ['$event'])

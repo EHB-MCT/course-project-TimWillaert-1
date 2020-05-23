@@ -1,0 +1,87 @@
+<div class="window" id="coachingsessions" cdkDrag cdkDragBoundary=".desktop" [ngStyle]="{'z-index': coachingsessionszindex}">
+
+  <div class="header" cdkDragHandle *ngIf="OSName == 'Windows'">
+    <div class="headertitle">
+      <img src="assets/img/coachingsessions.png"><p>Coaching Sessions</p>
+    </div>
+    <div class="operations">
+      <div class="min" (click)="min()">
+        &#95;
+      </div>
+      <div class="close" (click)="close()">
+        X
+      </div>
+    </div>
+  </div>
+
+  <div class="header" cdkDragHandle *ngIf="OSName == 'Mac'">
+    <div class="operations">
+      <div class="close" (click)="close()">
+        X
+      </div>
+      <div class="min" (click)="min()">
+        &#95;
+      </div>
+    </div>
+    <div class="rows">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="headertitle">
+      <p>Coaching Sessions</p>
+    </div>
+    <div class="rows">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="loading" *ngIf="isLoading">
+      <div class="loadcontainer">
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+        <div class="loaditem"></div>
+      </div>
+    </div>
+    <div *ngIf="error">
+      <p class="error">No connection could be made. Please ensure the back-end is up and running.</p>
+    </div>
+    <div *ngIf="!isLoading" class="container">
+      <p>Sign up for a coaching session with one of our experts and gain invaluable<br>insight into their field of work.<br>
+        You will receive more practical information via e-mail.
+      </p>
+      <hr>
+      <div class="extrapadding">
+        <p>I want to be coached by</p>
+        <select name="coach" id="coach">
+          <ng-container *ngFor="let coach of data">
+            <option value={{coach.name}}>{{coach.name}}</option>
+          </ng-container>
+        </select>
+        <form action="#">
+            <input type="text" placeholder="Name" name="name[]" required>
+            <input type="email" placeholder="Email" name="email[]" required>
+            <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

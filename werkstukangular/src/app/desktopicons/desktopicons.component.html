@@ -24,4 +24,9 @@
     <img src="assets/img/ticketsmac.png" *ngIf="OSName == 'Mac'">
     <p>Get Tickets</p>
   </li>
+  <li (dblclick)="clickCoachingSessions()" class="coachingsessions" tabindex="6" cdkDrag cdkDragBoundary=".desktop">
+    <img src="assets/img/coachingsessions.png" *ngIf="OSName == 'Windows'">
+    <img src="assets/img/coachingsessionsmac.png" *ngIf="OSName == 'Mac'">
+    <p>Coaching Sessions</p>
+  </li>
 </ul>

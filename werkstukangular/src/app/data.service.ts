@@ -25,6 +25,10 @@ export class DataService {
     return this.http.get('https://backend-timw.herokuapp.com/api/speakers/'+id)
   }
 
+  getSpeakers(){
+    return this.http.get('https://backend-timw.herokuapp.com/api/speakers');
+  }
+
   getSession(id){
     return this.http.get('https://backend-timw.herokuapp.com/api/sessions/'+id)
   }

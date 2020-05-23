@@ -27,6 +27,9 @@ export class WindowsService{
   private ticketsZ = new BehaviorSubject<number>(1);
   observeTicketsZ = this.ticketsZ.asObservable();
 
+  private coachingSessionsZ = new BehaviorSubject<number>(1);
+  observeCoachingSessionsZ = this.coachingSessionsZ.asObservable();
+
   private aboutActive = new BehaviorSubject<boolean>(false);
   observeAbout = this.aboutActive.asObservable();
 
@@ -41,6 +44,9 @@ export class WindowsService{
 
   private ticketsActive = new BehaviorSubject<boolean>(false);
   observeTickets = this.ticketsActive.asObservable();
+
+  private coachingSessionsActive = new BehaviorSubject<boolean>(false);
+  observeCoachingSessions = this.coachingSessionsActive.asObservable();
 
   constructor() {
     if (navigator.appVersion.indexOf('Mac') != -1){
@@ -79,6 +85,10 @@ export class WindowsService{
     this.ticketsZ.next(value);
   }
 
+  editCoachingSessionsZ(value: number){
+    this.coachingSessionsZ.next(value);
+  }
+
   editAbout(value: boolean){
     this.aboutActive.next(value);
   }
@@ -97,6 +107,10 @@ export class WindowsService{
 
   editTickets(value: boolean){
     this.ticketsActive.next(value);
+  }
+
+  editCoachingSessions(value: boolean){
+    this.coachingSessionsActive.next(value);
   }
 
 }
